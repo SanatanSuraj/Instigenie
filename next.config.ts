@@ -7,6 +7,7 @@ const nextConfig: NextConfig = withPWA({
   skipWaiting: true,
   disable: process.env.NODE_ENV === "development",
 })({
+  output: 'standalone',
   reactStrictMode: true,
   images: {
     formats: ["image/avif", "image/webp"],
@@ -24,7 +25,7 @@ const nextConfig: NextConfig = withPWA({
     scrollRestoration: true,
   },
   // Keep webpack enabled for PWA support
-  webpack: (config, { dev, isServer }) => {
+  webpack: (config) => {
     // Let next-pwa handle webpack config
     return config;
   },

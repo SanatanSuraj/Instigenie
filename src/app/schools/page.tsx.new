@@ -1,0 +1,159 @@
+'use client';
+
+import { motion } from 'framer-motion';
+import Link from 'next/link';
+
+export default function SchoolsPage() {
+  return (
+    <div className="min-h-screen">
+      {/* Hero Section */}
+      <section className="relative bg-gradient-to-br from-trust-navy to-healing-teal/90 text-clinic-white py-32 overflow-hidden">
+        <div className="absolute inset-0 bg-grid-pattern opacity-10"></div>
+        <div className="max-w-7xl mx-auto px-6 relative">
+          <div className="max-w-3xl">
+            <h1 className="text-4xl md:text-5xl font-bold mb-8 animate-fadeUp">
+              School Health Portal
+            </h1>
+            <p className="text-clinic-white/90 text-xl leading-relaxed mb-12 animate-fadeUp">
+              Access and manage your school&apos;s health records, schedule check-ups, and monitor wellness programs all in one place.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-6">
+              <button className="btn-primary px-8 py-4 text-lg shadow-xl hover:shadow-2xl transform hover:-translate-y-1 transition-all">
+                Login to Portal
+              </button>
+              <button className="btn-secondary px-8 py-4 text-lg border-2 border-clinic-white/20 backdrop-blur-sm hover:bg-clinic-white/10 transition-all">
+                Register School
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Features Grid */}
+      <section className="py-32 bg-gradient-to-b from-clinic-white to-healing-teal/5 dark:from-soft-charcoal dark:to-healing-teal/10">
+        <div className="max-w-7xl mx-auto px-6">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-center mb-20"
+          >
+            <h2 className="text-3xl md:text-4xl font-bold mb-6">Portal Features</h2>
+            <p className="text-soft-charcoal/80 dark:text-clinic-white/80 max-w-2xl mx-auto text-lg">
+              Everything you need to manage your school&apos;s health programs effectively
+            </p>
+          </motion.div>
+          
+          <div className="grid md:grid-cols-3 gap-8">
+          {[
+            {
+              title: "Health Records",
+              description: "Secure digital storage of student health records with easy access and updates",
+              href: "/schools/health-records",
+              icon: (
+                <svg className="w-6 h-6 text-healing-teal" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                </svg>
+              )
+            },
+            {
+              title: "Schedule Management",
+              description: "Efficiently plan and manage health check-ups and wellness programs",
+              href: "/schools/schedule-management",
+              icon: (
+                <svg className="w-6 h-6 text-healing-teal" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                </svg>
+              )
+            },
+            {
+              title: "Analytics Dashboard",
+              description: "Comprehensive health analytics and insights for your school",
+              href: "/schools/analytics-dashboard",
+              icon: (
+                <svg className="w-6 h-6 text-healing-teal" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+                </svg>
+              )
+            },
+            {
+              title: "Parent Portal",
+              description: "Dedicated access for parents to view their child's health records",
+              href: "/schools/parent-portal",
+              icon: (
+                <svg className="w-6 h-6 text-healing-teal" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
+                </svg>
+              )
+            },
+            {
+              title: "Emergency Protocols",
+              description: "Quick access to emergency procedures and contact information",
+              href: "/schools/emergency-protocols",
+              icon: (
+                <svg className="w-6 h-6 text-healing-teal" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
+                </svg>
+              )
+            },
+            {
+              title: "Reports Generation",
+              description: "Generate detailed health reports and statistics for your school",
+              href: "/schools/reports-generation",
+              icon: (
+                <svg className="w-6 h-6 text-healing-teal" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 17v-2m3 2v-4m3 4v-6m2 10H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                </svg>
+              )
+            }
+          ].map((feature, index) => (
+            <Link key={index} href={feature.href}>
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: index * 0.1 }}
+                className="bg-white dark:bg-soft-charcoal/50 rounded-xl p-8 shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300 h-full"
+              >
+                <div className="w-14 h-14 rounded-lg bg-healing-teal/10 flex items-center justify-center mb-6 transform hover:rotate-6 transition-transform">
+                  {feature.icon}
+                </div>
+                <h3 className="text-xl font-semibold mb-4">{feature.title}</h3>
+                <p className="text-soft-charcoal/80 dark:text-clinic-white/70 leading-relaxed">
+                  {feature.description}
+                </p>
+              </motion.div>
+            </Link>
+          ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Call to Action */}
+      <section className="py-32 bg-gradient-to-br from-clinic-white via-healing-teal/5 to-clinic-white dark:from-soft-charcoal dark:via-healing-teal/10 dark:to-soft-charcoal relative overflow-hidden">
+        <div className="absolute inset-0 bg-grid-pattern opacity-5"></div>
+        <div className="max-w-7xl mx-auto px-6 text-center relative">
+          <motion.div 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="max-w-3xl mx-auto"
+          >
+            <h2 className="text-3xl md:text-4xl font-bold mb-8">Ready to Transform Your School&apos;s Health Management?</h2>
+            <p className="text-soft-charcoal/80 dark:text-clinic-white/80 text-xl mb-12 leading-relaxed">
+              Join hundreds of schools already using our digital health management platform.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-6 justify-center">
+              <button className="btn-primary px-8 py-4 text-lg shadow-xl hover:shadow-2xl transform hover:-translate-y-1 transition-all duration-300">
+                Get Started Now
+              </button>
+              <button className="btn-secondary px-8 py-4 text-lg">
+                Schedule a Demo
+              </button>
+            </div>
+          </motion.div>
+        </div>
+      </section>
+    </div>
+  );
+}

@@ -1,26 +1,157 @@
-@import "tailwindcss";
+/* globals.css */
 
+/* 1. Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600&family=Inter:wght@400;500;600&display=swap');
+
+/* 2. CSS Variables */
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* Base colors */
+  --base-900: 23, 37, 84;    /* #17254E */
+  --base-800: 30, 41, 89;    /* #1E2959 */
+  --base-700: 45, 55, 99;    /* #2D3763 */
+  --base-600: 71, 81, 123;   /* #47517B */
+  --base-500: 99, 108, 148;  /* #636C94 */
+  --base-400: 139, 146, 174; /* #8B92AE */
+  --base-300: 179, 184, 200; /* #B3B8C8 */
+  --base-200: 218, 221, 227; /* #DADDE3 */
+  --base-100: 237, 238, 241; /* #EDEEF1 */
+  --base-50: 246, 247, 248;  /* #F6F7F8 */
+  --base-0: 255, 255, 255;   /* #FFFFFF */
+  
+  /* Accent colors */
+  --accent-900: 0, 108, 127;   /* #006C7F */
+  --accent-800: 0, 126, 148;   /* #007E94 */
+  --accent-700: 0, 144, 169;   /* #0090A9 */
+  --accent-600: 0, 162, 190;   /* #00A2BE */
+  --accent-500: 0, 180, 211;   /* #00B4D3 */
+  --accent-400: 51, 198, 223;  /* #33C6DF */
+  --accent-300: 102, 216, 235; /* #66D8EB */
+  --accent-200: 153, 233, 247; /* #99E9F7 */
+  --accent-100: 204, 251, 255; /* #CCFBFF */
+  --accent-50: 229, 253, 255;  /* #E5FDFF */
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+/* 3. Tailwind directives */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* 4. Focus outline helpers */
+:focus:not(:focus-visible) {
+  outline: none;
+}
+body:not(.user-is-tabbing) *:focus {
+  outline: none;
+}
+.user-is-tabbing *:focus-visible {
+  outline: 2px solid rgb(var(--accent-500));
+  outline-offset: 2px;
+  border-radius: 0.5rem;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+/* 5. Base layer */
+@layer base {
+  body {
+    @apply font-sans text-base-900 dark:text-base-50 bg-base-50 dark:bg-base-900;
+  }
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-display;
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+/* 6. Components layer */
+@layer components {
+  .btn-primary {
+    @apply bg-accent-500 text-base-50 px-6 py-3 rounded-xl
+           hover:bg-accent-600 transition-colors duration-300 animate-fadeUp
+           focus-visible:ring-2 focus-visible:ring-accent-500 focus-visible:ring-offset-2
+           disabled:opacity-50 disabled:cursor-not-allowed;
+  }
+  
+  .btn-secondary {
+    @apply border border-accent-500 text-accent-500 px-6 py-3 rounded-xl
+           hover:bg-accent-500/10 transition-colors duration-300
+           focus-visible:ring-2 focus-visible:ring-accent-500 focus-visible:ring-offset-2
+           disabled:opacity-50 disabled:cursor-not-allowed;
+  }
+
+  .card {
+    @apply bg-base-50 rounded-xl shadow-card border border-base-200
+           dark:bg-base-800 dark:border-base-700
+           p-6 transition-colors duration-300;
+  }
+}
+
+/* 7. Custom animations */
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-20px); }
+}
+
+@keyframes subtle-shift {
+  0%, 100% { transform: translate(0px, 0px); }
+  25% { transform: translate(2px, 2px); }
+  75% { transform: translate(-2px, -2px); }
+}
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+.animate-float-delayed {
+  animation: float 6s ease-in-out infinite;
+  animation-delay: 2s;
+}
+
+.animate-subtle-shift {
+  animation: subtle-shift 8s ease-in-out infinite;
+}
+
+.animate-fadeUp {
+  animation: fadeUp 0.6s ease-out forwards;
+  opacity: 0;
+}
+
+/* 8. Utilities */
+.text-gradient {
+  @apply bg-gradient-to-r from-healing-teal to-trust-navy bg-clip-text text-transparent;
+}
+
+.hover-card {
+  @apply transition-all duration-300 hover:shadow-xl hover:-translate-y-1;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-clinic-white dark:bg-soft-charcoal;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-healing-teal/50 rounded-full hover:bg-healing-teal transition-colors duration-300;
+}
+
+.page-transition {
+  @apply transition-all duration-300 ease-in-out;
+}
+
+.img-hover {
+  @apply transition-transform duration-300 hover:scale-105;
+}
+
+::selection {
+  @apply bg-healing-teal/20 text-trust-navy dark:text-clinic-white;
 }

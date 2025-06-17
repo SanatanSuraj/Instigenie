@@ -37,7 +37,7 @@ export default function AiraChat() {
 
         const data = await response.json()
         setMessages(prev => [...prev, { type: 'bot', content: data.content }])
-      } catch (error) {
+      } catch {
         setMessages(prev => [...prev, { type: 'bot', content: 'Sorry, I encountered an error processing your request.' }])
       } finally {
         setIsProcessing(false)

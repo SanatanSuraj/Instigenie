@@ -10,6 +10,7 @@ const nextConfig: NextConfig = withPWA({
   output: 'standalone',
   reactStrictMode: true,
   images: {
+    domains: ['schoolhealth.plus'],
     formats: ["image/avif", "image/webp"],
     remotePatterns: [
       {
@@ -18,22 +19,10 @@ const nextConfig: NextConfig = withPWA({
         pathname: "/**",
       },
     ],
-    unoptimized: process.env.NODE_ENV === "development", // Allow unoptimized images during development
   },
+  // Disable experimental features for stability
   experimental: {
-    optimizeCss: true,
     scrollRestoration: true,
-  },
-  // Keep webpack enabled for PWA support
-  webpack: (config) => {
-    // Let next-pwa handle webpack config
-    return config;
-  },
-  turbopack: {
-    // Turbopack configuration
-    rules: {
-      // Add any specific rules if needed
-    },
   },
   async headers() {
     return [

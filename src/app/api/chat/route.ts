@@ -1,13 +1,16 @@
 import { NextResponse } from 'next/server';
 
-const API_KEY = process.env.DEEPSEEK_API_KEY;
 const API_URL = 'https://openrouter.ai/api/v1/chat/completions';
 
-if (!API_KEY) {
-  throw new Error('DEEPSEEK_API_KEY is not set in environment variables');
-}
-
 export async function POST(request: Request) {
+  const API_KEY = process.env.DEEPSEEK_API_KEY;
+  
+  if (!API_KEY) {
+    return NextResponse.json(
+      { error: 'API key not configured' },
+      { status: 500 }
+    );
+  }
   try {
     const { messages } = await request.json();
 

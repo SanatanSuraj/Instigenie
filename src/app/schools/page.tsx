@@ -158,7 +158,7 @@ export default function SchoolsPage() {
 								transition={{ delay: 0.1 }}
 								className="text-clinic-white/90 text-xl leading-relaxed mb-12"
 							>
-								Transform your school's healthcare system with our integrated
+								Transform your school&apos;s healthcare system with our integrated
 								digital solutions. Streamline health records, scheduling, and
 								emergency protocols all in one place.
 							</motion.p>

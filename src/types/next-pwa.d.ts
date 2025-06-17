@@ -8,7 +8,20 @@ declare module 'next-pwa' {
     scope?: string;
     sw?: string;
     skipWaiting?: boolean;
-    runtimeCaching?: any[];
+    runtimeCaching?: Array<{
+      urlPattern: RegExp | string;
+      handler: string;
+      options?: {
+        cacheName?: string;
+        expiration?: {
+          maxEntries?: number;
+          maxAgeSeconds?: number;
+        };
+        cacheableResponse?: {
+          statuses: number[];
+        };
+      };
+    }>;
   }
 
   function withPWA(config: PWAConfig): (config: NextConfig) => NextConfig;

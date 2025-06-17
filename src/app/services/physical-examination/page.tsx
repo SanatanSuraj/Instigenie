@@ -127,7 +127,7 @@ export default function PhysicalExaminationPage() {
           >
             <h2 className="text-3xl md:text-4xl font-bold mb-8">Ready to Get Started?</h2>
             <p className="text-soft-charcoal/80 dark:text-clinic-white/80 text-xl mb-12">
-              Contact us today to learn more about our physical examination services and how we can help protect your students' health.
+              Contact us today to learn more about our physical examination services and how we can help protect your students&apos; health.
             </p>
             <div className="flex flex-col sm:flex-row gap-6 justify-center">
               <button onClick={handleScheduleConsultation} className="btn-primary px-8 py-4 text-lg">Schedule Consultation</button>

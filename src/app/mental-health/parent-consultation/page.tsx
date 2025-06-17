@@ -29,7 +29,7 @@ export default function ParentConsultationPage() {
 							</span>
 						</h1>
 						<p className="text-clinic-white/90 text-xl leading-relaxed mb-8 animate-fadeUp">
-							Empowering parents with insights and strategies to support their child's mental wellbeing.
+							Empowering parents with insights and strategies to support their child&apos;s mental wellbeing.
 						</p>
 						<button onClick={handleScheduleConsultation} className="btn-primary px-8 py-4 text-lg animate-fadeUp">
 							Schedule Consultation

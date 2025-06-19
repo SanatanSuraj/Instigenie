@@ -1,5 +1,5 @@
 'use client';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, Suspense } from 'react';
 import { useSearchParams } from 'next/navigation';
 import { motion } from 'framer-motion';
 
@@ -9,7 +9,8 @@ interface SubmitStatus {
   error: string | null;
 }
 
-export default function ContactPage() {
+// Create a client component that uses useSearchParams
+function ContactForm() {
   const searchParams = useSearchParams();
 
   const [formData, setFormData] = useState({
@@ -432,5 +433,23 @@ export default function ContactPage() {
         </div>
       </section>
     </>
+  );
+}
+
+// Loading fallback component
+function ContactFormLoading() {
+  return (
+    <div className="text-center py-12">
+      <div className="inline-block h-8 w-8 animate-spin rounded-full border-4 border-solid border-healing-teal border-r-transparent align-[-0.125em] motion-reduce:animate-[spin_1.5s_linear_infinite]"></div>
+      <p className="mt-4 text-gray-600">Loading contact form...</p>
+    </div>
+  );
+}
+
+export default function ContactPage() {
+  return (
+    <Suspense fallback={<ContactFormLoading />}>
+      <ContactForm />
+    </Suspense>
   );
 }

@@ -184,6 +184,7 @@ export default function SchoolsPage() {
 										src="/images/schools/Digital Vision Screening.png"
 										alt="Digital Vision Screening"
 										fill
+										sizes="(max-width: 768px) 100vw, 50vw"
 										className="object-cover transform hover:scale-105 transition-transform duration-300"
 									/>
 								</div>
@@ -194,6 +195,7 @@ export default function SchoolsPage() {
 										src="/images/schools/School Dental Checkup.png"
 										alt="School Dental Checkup"
 										fill
+										sizes="(max-width: 768px) 100vw, 50vw"
 										className="object-cover transform hover:scale-105 transition-transform duration-300"
 									/>
 								</div>
@@ -202,6 +204,7 @@ export default function SchoolsPage() {
 										src="/images/schools/Indian Health Education Class.png"
 										alt="Health Education Class"
 										fill
+										sizes="(max-width: 768px) 100vw, 50vw"
 										className="object-cover transform hover:scale-105 transition-transform duration-300"
 									/>
 								</div>

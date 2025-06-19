@@ -27,6 +27,7 @@ export function CardImage({ src, alt, className = '' }: CardImageProps) {
         src={src} 
         alt={alt} 
         fill
+        sizes="(max-width: 640px) 100vw, (max-width: 768px) 288px, 312px"
         className="object-cover rounded-xl" 
       />
     </div>

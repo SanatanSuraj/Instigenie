@@ -9,7 +9,33 @@ const config: Config = {
   ],
   darkMode: 'class',
   theme: {
+    screens: {
+      'xs': '375px',     // Small phones
+      'sm': '640px',     // Larger phones
+      'md': '768px',     // Tablets
+      'lg': '1024px',    // Laptops
+      'xl': '1280px',    // Desktop
+      '2xl': '1536px',   // Large screens
+    },
+    container: {
+      center: true,
+      padding: {
+        DEFAULT: '1rem',
+        sm: '2rem',
+        lg: '4rem',
+        xl: '5rem',
+        '2xl': '6rem',
+      },
+    },
     extend: {
+      maxWidth: {
+        'screen-xs': '375px',
+        'screen-sm': '640px',
+        'screen-md': '768px',
+        'screen-lg': '1024px',
+        'screen-xl': '1280px',
+        'screen-2xl': '1536px',
+      },
       colors: {
         'trust-navy': '#17254E',
         'healing-teal': '#00B4D3',

@@ -32,13 +32,21 @@ export default function PhysicalExaminationPage() {
                 src="/images/schools/School Health Checkup.png"
                 alt="Physical Examination"
                 fill
-                className="object-cover"
+                className="object-cover rounded-xl"
                 sizes="(max-width: 768px) 100vw, 50vw"
+                priority
+                onError={(e) => {
+                  console.error('Error loading image:', e);
+                  const img = e.target as HTMLImageElement;
+                  img.style.display = 'none';
+                }}
+                loading="eager"
               />
             </div>
           </div>
         </div>
       </section>
+
 
       {/* Features Section */}
       <section className="py-24 bg-gradient-to-b from-clinic-white to-healing-teal/5 dark:from-soft-charcoal dark:to-healing-teal/10">

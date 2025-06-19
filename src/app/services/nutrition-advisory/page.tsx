@@ -24,13 +24,17 @@ export default function NutritionAdvisoryPage() {
                 src="/images/schools/Nutrition Workshop with Students.png"
                 alt="Nutrition Advisory"
                 fill
-                className="object-cover"
+                className="object-cover rounded-xl"
                 sizes="(max-width: 768px) 100vw, 50vw"
+                priority
+                loading="eager"
               />
             </div>
           </div>
         </div>
       </section>
+
+
 
       {/* Services Section */}
       <section className="py-24 bg-gradient-to-b from-clinic-white to-healing-teal/5 dark:from-soft-charcoal dark:to-healing-teal/10">

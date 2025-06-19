@@ -39,6 +39,7 @@ export default function VideoLibraryPage() {
                     src={category.thumbnail}
                     alt={category.title}
                     fill
+                    sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
                     className="object-cover"
                   />
                   <div className="absolute inset-0 bg-trust-navy/30 flex items-center justify-center">
@@ -80,6 +81,7 @@ export default function VideoLibraryPage() {
                     src={playlist.thumbnail}
                     alt={playlist.title}
                     fill
+                    sizes="(max-width: 768px) 96px, 128px"
                     className="object-cover"
                   />
                 </div>

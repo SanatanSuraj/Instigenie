@@ -28,16 +28,20 @@ export default function TelemedicinePage() {
             </div>
             <div className="relative h-[400px] rounded-xl overflow-hidden">
               <Image
-                src="/images/services/Virtual Healthcare Consultation.png"
+                src="/images/schools/Virtual Health Consultation.png"
                 alt="Telemedicine Services"
                 fill
-                className="object-cover"
+                className="object-cover rounded-xl"
                 sizes="(max-width: 768px) 100vw, 50vw"
+                priority
+                loading="eager"
               />
             </div>
           </div>
         </div>
       </section>
+
+
 
       {/* Features Section */}
       <section className="py-24 bg-gradient-to-b from-clinic-white to-healing-teal/5 dark:from-soft-charcoal dark:to-healing-teal/10">

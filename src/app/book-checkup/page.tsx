@@ -3,7 +3,8 @@
 import { useState } from 'react';
 import Image from 'next/image';
 
-const BookCheckup = () => {
+export default function BookCheckup() {
+  const [imageError, setImageError] = useState(false);
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -29,13 +30,21 @@ const BookCheckup = () => {
     <div className="min-h-screen bg-gradient-to-b from-blue-50 to-white">
       {/* Hero Section */}
       <div className="relative h-[400px] w-full">
-        <Image
-          src="/images/services/School friends.png"
-          alt="Health Checkup Banner"
-          fill
-          className="object-cover"
-          priority
-        />
+        {!imageError ? (
+          <Image
+            src="/images/services/School friends.png"
+            alt="Health Checkup Banner"
+            fill
+            sizes="100vw"
+            className="object-cover"
+            priority
+            onError={() => setImageError(true)}
+          />
+        ) : (
+          <div className="absolute inset-0 bg-healing-teal/20 flex items-center justify-center">
+            <span className="text-lg text-trust-navy">Image unavailable</span>
+          </div>
+        )}
         <div className="absolute inset-0 bg-black/40 flex items-center justify-center">
           <h1 className="text-4xl md:text-5xl font-bold text-white text-center">
             Book Your Health Checkup
@@ -191,5 +200,3 @@ const BookCheckup = () => {
     </div>
   );
 };
-
-export default BookCheckup;

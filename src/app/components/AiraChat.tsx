@@ -5,7 +5,7 @@ import { useState } from 'react'
 export default function AiraChat() {
   const [isOpen, setIsOpen] = useState(false)
   const [messages, setMessages] = useState<{ type: 'user' | 'bot'; content: string }[]>([
-    { type: 'bot', content: 'Hi! I\'m AIRA, your AI Routine Assistant powered by DeepSeek R1. How can I help you today?' }
+    { type: 'bot', content: 'Hi! I\'m AIRA, your AI Routine Assistant. How can I help you today?' }
   ])
   const [isProcessing, setIsProcessing] = useState(false)
 
@@ -85,14 +85,6 @@ export default function AiraChat() {
                   <p className="text-sm text-base-600 dark:text-base-300">AI Routine Assistant</p>
                 </div>
               </div>
-              <button 
-                onClick={() => setIsOpen(false)}
-                className="w-8 h-8 flex items-center justify-center rounded-full hover:bg-base-200/10 dark:hover:bg-base-50/10"
-              >
-                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-                </svg>
-              </button>
             </div>
 
             {/* Messages */}

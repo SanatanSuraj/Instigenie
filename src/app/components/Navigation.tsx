@@ -3,7 +3,6 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import { usePathname } from 'next/navigation';
-import DarkModeToggle from './DarkModeToggle';
 import { useMobileNav } from '../hooks/useMobileNav';
 
 const links = [
@@ -94,7 +93,6 @@ export default function Navigation() {
 						/>
 						Book Checkup
 					</button>
-					<DarkModeToggle />
 				</div>
 
 				{/* Mobile Navigation Button */}

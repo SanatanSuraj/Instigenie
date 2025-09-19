@@ -12,6 +12,13 @@ A modern, comprehensive school healthcare management platform built with Next.js
 - **Parent Portal**: Easy access to health records and appointment scheduling
 - **School Dashboard**: Comprehensive health monitoring and reporting tools
 
+## AIchat
+Specialized Focus Areas:
+🧠 Mental Health: Stress, anxiety, academic pressure, emotional regulation, self-esteem
+💪 Physical Health: Nutrition, exercise, hygiene, growth concerns, healthy habits
+🤝 Social Health: Peer relationships, bullying, communication skills, friendship problems
+
+
 ## 🚀 Tech Stack
 
 - **Frontend**: Next.js 14+

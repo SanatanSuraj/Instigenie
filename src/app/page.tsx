@@ -3,11 +3,9 @@
 import OptimizedImage from './components/OptimizedImage';
 import { motion } from 'framer-motion';
 import { useRouter } from 'next/navigation';
-import { useState } from 'react';
 
 export default function Home() {
   const router = useRouter();
-  const [isAiraChatOpen, setIsAiraChatOpen] = useState(false);
 
   const handleBookHealthCheck = () => {
     router.push('/contact?subject=checkup&type=comprehensive');
@@ -16,6 +14,7 @@ export default function Home() {
   const handleLearnMore = () => {
     router.push('/services?section=overview');
   };
+
 
   const handleServiceClick = (serviceTitle: string) => {
     const service = services.find((s) => s.title === serviceTitle);
@@ -310,7 +309,7 @@ export default function Home() {
         animate={{ scale: 1 }}
         whileHover={{ scale: 1.1 }}
         whileTap={{ scale: 0.9 }}
-        onClick={() => setIsAiraChatOpen(!isAiraChatOpen)}
+onClick={() => {}}
         className="fixed bottom-6 right-6 w-16 h-16 bg-healing-teal hover:bg-healing-teal/90 rounded-full flex items-center justify-center shadow-lg hover:shadow-xl transition-all z-50"
         aria-label="Open AI Assistant"
       >

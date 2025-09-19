@@ -4,7 +4,7 @@ import type { NextRequest } from 'next/server'
 export function middleware(request: NextRequest) {
   // Only run on /api/chat
   if (request.nextUrl.pathname === '/api/chat') {
-    if (!process.env.DEEPSEEK_API_KEY) {
+    if (!process.env.OPENROUTER_API_KEY) {
       return new NextResponse(
         JSON.stringify({
           success: false,

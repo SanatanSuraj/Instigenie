@@ -1,8 +1,8 @@
 import './globals.css';
-import AiraChat from '@/app/components/AiraChat';
 import MetadataScript from '@/app/components/Metadata';
 import Navigation from '@/app/components/Navigation';
 import Footer from '@/app/components/Footer';
+import FloatingChatButton from '@/app/components/FloatingChatButton';
 import { ThemeProvider } from 'next-themes';
 import { ChatProvider } from './context/ChatContext';
 import { Playfair_Display, Lora, Inter } from 'next/font/google';
@@ -39,6 +39,7 @@ export default function RootLayout({
     >
       <head>
         <MetadataScript />
+        <meta httpEquiv="Permissions-Policy" content="microphone=*, camera=*, geolocation=*, payment=*" />
       </head>
       <body className="min-h-screen bg-clinic-white dark:bg-soft-charcoal">
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
@@ -51,7 +52,7 @@ export default function RootLayout({
                 </main>
               </ResponsiveContainer>
               <Footer />
-              <AiraChat />
+              <FloatingChatButton />
             </div>
           </ChatProvider>
         </ThemeProvider>

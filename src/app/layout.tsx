@@ -7,6 +7,7 @@ import { ThemeProvider } from 'next-themes';
 import { ChatProvider } from './context/ChatContext';
 import { Playfair_Display, Lora, Inter } from 'next/font/google';
 import ResponsiveContainer from './components/layout/ResponsiveContainer';
+import { SpeedInsights } from '@vercel/speed-insights/next';
 
 const playfair = Playfair_Display({
   subsets: ['latin'],
@@ -56,6 +57,7 @@ export default function RootLayout({
             </div>
           </ChatProvider>
         </ThemeProvider>
+        <SpeedInsights />
       </body>
     </html>
   );

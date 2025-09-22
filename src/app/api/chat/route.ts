@@ -14,7 +14,37 @@ export async function POST(request: Request) {
   }
 
   try {
-    const { messages } = await request.json()
+    const body = await request.json()
+    const messages = Array.isArray(body?.messages) ? body.messages : null
+
+    if (!messages || messages.length === 0) {
+      return NextResponse.json(
+        { error: "Request must include at least one message" },
+        { status: 400 }
+      )
+    }
+
+    const invalidMessage = messages.find((msg: unknown) => {
+      if (!msg || typeof msg !== "object") return true
+
+      const { role, content } = msg as {
+        role?: unknown
+        content?: unknown
+      }
+
+      if (typeof role !== "string" || typeof content !== "string") {
+        return true
+      }
+
+      return !content.trim()
+    })
+
+    if (invalidMessage) {
+      return NextResponse.json(
+        { error: "Each message must include a role and non-empty content" },
+        { status: 400 }
+      )
+    }
 
     // System prompt for student health focus
     const systemPrompt = {
@@ -75,10 +105,21 @@ Remember: SHORT responses, ONE question at a time, like a real conversation! ðŸ˜
     // Combine system prompt with user messages
     const apiMessages = [
       systemPrompt,
-      ...messages.map((msg: { role: string; content: string }) => ({
-        role: msg.role === "user" ? "user" : "assistant",
-        content: msg.content,
-      }))
+      ...messages.map((msg: { role: string; content: string }) => {
+        const trimmedContent = msg.content.trim()
+        let normalisedRole: "user" | "assistant" | "system" = "assistant"
+
+        if (msg.role === "user") {
+          normalisedRole = "user"
+        } else if (msg.role === "system") {
+          normalisedRole = "system"
+        }
+
+        return {
+          role: normalisedRole,
+          content: trimmedContent,
+        }
+      })
     ]
 
     const response = await fetch(API_URL, {

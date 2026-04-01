@@ -1,127 +1,43 @@
 'use client';
-import { motion } from 'framer-motion';
+import { useRouter } from 'next/navigation';
+import PageHero from '../../components/PageHero';
+
+const reportTypes = [
+  { icon: '📊', title: 'Health Summary Report', desc: 'Overall school health status with key metrics and year-on-year trends.' },
+  { icon: '📈', title: 'Growth Analysis', desc: 'Grade and gender-wise BMI, height, and weight distribution charts.' },
+  { icon: '👁️', title: 'Screening Outcomes', desc: 'Vision, hearing, and dental screening results with referral rates.' },
+  { icon: '🧠', title: 'Mental Wellness Report', desc: 'Aggregated mental health index scores and counseling utilization rates.' },
+  { icon: '💉', title: 'Immunization Report', desc: 'Vaccination coverage status and pending immunization tracking.' },
+  { icon: '📋', title: 'Compliance Report', desc: 'Regulatory health compliance documentation for school boards and government.' },
+];
 
 export default function ReportsGenerationPage() {
+  const router = useRouter();
   return (
     <>
-      {/* Hero Section */}
-      <section className="relative bg-gradient-to-br from-trust-navy to-healing-teal/90 text-clinic-white py-32 overflow-hidden">
-        <div className="absolute inset-0 bg-grid-pattern opacity-10"></div>
-        <div className="max-w-7xl mx-auto px-6 relative">
-          <div className="max-w-3xl">
-            <h1 className="text-4xl md:text-5xl font-bold mb-8 animate-fadeUp">
-              Reports Generation
-            </h1>
-            <p className="text-clinic-white/90 text-xl leading-relaxed mb-12 animate-fadeUp" style={{ animationDelay: '0.1s' }}>
-              Generate comprehensive health reports and statistics for your school.
-            </p>
+      <PageHero eyebrow="Schools · Reports" title="Health Reports" highlight="Generation" subtitle="Generate detailed, professional health reports and statistics for your school on demand — ready for board meetings, government submissions, or parent communication." cta={{ label: 'Generate Sample Report', href: '/book-checkup' }} ctaSecondary={{ label: 'All School Features', href: '/schools' }} gradient="linear-gradient(160deg, #EFF6FF 0%, #F5F3FF 60%, #F0FDFA 100%)" />
+      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))', gap: '14px', marginBottom: '48px' }}>
+        {reportTypes.map(r => (
+          <div key={r.title} style={{ padding: '22px', borderRadius: '16px', background: '#FFFFFF', border: '1.5px solid rgba(124,58,237,0.10)', boxShadow: '0 2px 8px rgba(0,0,0,0.04)' }}>
+            <div style={{ fontSize: '24px', marginBottom: '10px' }}>{r.icon}</div>
+            <div style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: '14px', fontWeight: 700, color: '#0F2942', marginBottom: '6px' }}>{r.title}</div>
+            <p style={{ fontSize: '13px', color: '#3D5A73', lineHeight: 1.6, fontFamily: "'DM Sans', sans-serif", margin: 0 }}>{r.desc}</p>
           </div>
+        ))}
+      </div>
+      <div style={{ padding: '28px', borderRadius: '18px', background: 'linear-gradient(135deg, #F5F3FF, #EFF6FF)', border: '1.5px solid rgba(124,58,237,0.15)', marginBottom: '24px' }}>
+        <h3 style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: '16px', fontWeight: 800, color: '#0F2942', marginBottom: '14px' }}>📤 Export Formats Available</h3>
+        <div style={{ display: 'flex', gap: '10px', flexWrap: 'wrap' }}>
+          {['PDF Report', 'Excel Spreadsheet', 'CSV Data', 'PowerPoint Slides', 'Print-Ready Format'].map(f => (
+            <span key={f} style={{ padding: '6px 14px', borderRadius: '100px', background: '#FFFFFF', border: '1.5px solid rgba(124,58,237,0.18)', fontSize: '13px', fontWeight: 600, color: '#7C3AED', fontFamily: "'DM Sans', sans-serif" }}>{f}</span>
+          ))}
         </div>
-      </section>
-
-      {/* Reports Section */}
-      <section className="py-32 bg-gradient-to-b from-clinic-white to-healing-teal/5 dark:from-soft-charcoal dark:to-healing-teal/10">
-        <div className="max-w-7xl mx-auto px-6">
-          <div className="grid md:grid-cols-2 gap-12">
-            <motion.div 
-              initial={{ opacity: 0, x: -20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              className="bg-white dark:bg-soft-charcoal/50 rounded-xl p-8 shadow-lg"
-            >
-              <h2 className="text-2xl font-bold mb-6">Available Reports</h2>
-              <div className="space-y-6">
-                <div className="flex items-start gap-4">
-                  <svg className="w-6 h-6 text-healing-teal mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 17v-2m3 2v-4m3 4v-6m2 10H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
-                  </svg>
-                  <div>
-                    <h3 className="font-semibold mb-1">Health Statistics Report</h3>
-                    <p className="text-soft-charcoal/80 dark:text-clinic-white/70 text-sm">Comprehensive overview of school health metrics</p>
-                  </div>
-                </div>
-
-                <div className="flex items-start gap-4">
-                  <svg className="w-6 h-6 text-healing-teal mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 17v-2m3 2v-4m3 4v-6m2 10H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
-                  </svg>
-                  <div>
-                    <h3 className="font-semibold mb-1">Immunization Compliance</h3>
-                    <p className="text-soft-charcoal/80 dark:text-clinic-white/70 text-sm">Track vaccination status and requirements</p>
-                  </div>
-                </div>
-
-                <div className="flex items-start gap-4">
-                  <svg className="w-6 h-6 text-healing-teal mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 17v-2m3 2v-4m3 4v-6m2 10H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
-                  </svg>
-                  <div>
-                    <h3 className="font-semibold mb-1">Incident Reports</h3>
-                    <p className="text-soft-charcoal/80 dark:text-clinic-white/70 text-sm">Detailed documentation of health incidents</p>
-                  </div>
-                </div>
-
-                <div className="flex items-start gap-4">
-                  <svg className="w-6 h-6 text-healing-teal mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 17v-2m3 2v-4m3 4v-6m2 10H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
-                  </svg>
-                  <div>
-                    <h3 className="font-semibold mb-1">Wellness Program Reports</h3>
-                    <p className="text-soft-charcoal/80 dark:text-clinic-white/70 text-sm">Progress tracking of health initiatives</p>
-                  </div>
-                </div>
-              </div>
-            </motion.div>
-
-            <motion.div
-              initial={{ opacity: 0, x: 20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              className="space-y-8"
-            >
-              <div className="bg-white dark:bg-soft-charcoal/50 rounded-xl p-8 shadow-lg">
-                <h2 className="text-2xl font-bold mb-6">Report Features</h2>
-                <ul className="space-y-4">
-                  <li className="flex items-start gap-4">
-                    <svg className="w-6 h-6 text-healing-teal mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                    </svg>
-                    <span>Customizable report templates</span>
-                  </li>
-                  <li className="flex items-start gap-4">
-                    <svg className="w-6 h-6 text-healing-teal mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                    </svg>
-                    <span>Multiple export formats (PDF, Excel, CSV)</span>
-                  </li>
-                  <li className="flex items-start gap-4">
-                    <svg className="w-6 h-6 text-healing-teal mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                    </svg>
-                    <span>Automated report scheduling</span>
-                  </li>
-                  <li className="flex items-start gap-4">
-                    <svg className="w-6 h-6 text-healing-teal mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                    </svg>
-                    <span>Interactive data visualizations</span>
-                  </li>
-                </ul>
-              </div>
-
-              <div className="bg-healing-teal/10 dark:bg-healing-teal/20 rounded-xl p-8">
-                <h3 className="text-xl font-semibold mb-4">Need Help?</h3>
-                <p className="text-soft-charcoal/80 dark:text-clinic-white/70 mb-4">
-                  Our support team is here to help you generate the reports you need.
-                </p>
-                <button className="btn-primary px-6 py-3">
-                  Contact Support
-                </button>
-              </div>
-            </motion.div>
-          </div>
-        </div>
-      </section>
+      </div>
+      <div style={{ borderRadius: '20px', background: 'linear-gradient(135deg, #7C3AED 0%, #2563EB 100%)', padding: '44px', textAlign: 'center' }}>
+        <h2 style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: 'clamp(20px, 3vw, 32px)', fontWeight: 800, color: '#fff', marginBottom: '10px' }}>Generate Your First Report</h2>
+        <p style={{ fontSize: '15px', color: 'rgba(255,255,255,0.88)', marginBottom: '24px', fontFamily: "'DM Sans', sans-serif" }}>Professional health reports ready in minutes, not days.</p>
+        <button onClick={() => router.push('/book-checkup')} style={{ padding: '13px 28px', borderRadius: '10px', fontSize: '15px', fontWeight: 700, color: '#7C3AED', cursor: 'pointer', border: 'none', background: '#FFFFFF', fontFamily: "'DM Sans', sans-serif" }}>Get Started →</button>
+      </div>
     </>
   );
 }

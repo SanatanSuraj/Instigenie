@@ -1,429 +1,139 @@
 'use client';
-import { motion } from 'framer-motion';
-import Link from 'next/link';
+
 import Image from 'next/image';
+import Link from 'next/link';
 import { useRouter } from 'next/navigation';
+import PageHero from '../components/PageHero';
 
 const features = [
-	{
-		title: 'Health Records',
-		description:
-			'Secure digital storage of student health records with easy access and updates',
-		href: '/schools/health-records',
-		icon: (
-			<svg
-				className="w-6 h-6 text-healing-teal"
-				fill="none"
-				stroke="currentColor"
-				viewBox="0 0 24 24"
-			>
-				<path
-					strokeLinecap="round"
-					strokeLinejoin="round"
-					strokeWidth={2}
-					d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
-				/>
-			</svg>
-		),
-	},
-	{
-		title: 'Schedule Management',
-		description:
-			'Efficiently plan and manage health check-ups and wellness programs',
-		href: '/schools/schedule-management',
-		icon: (
-			<svg
-				className="w-6 h-6 text-healing-teal"
-				fill="none"
-				stroke="currentColor"
-				viewBox="0 0 24 24"
-			>
-				<path
-					strokeLinecap="round"
-					strokeLinejoin="round"
-					strokeWidth={2}
-					d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"
-				/>
-			</svg>
-		),
-	},
-	{
-		title: 'Analytics Dashboard',
-		description: 'Comprehensive health analytics and insights for your school',
-		href: '/schools/analytics-dashboard',
-		icon: (
-			<svg
-				className="w-6 h-6 text-healing-teal"
-				fill="none"
-				stroke="currentColor"
-				viewBox="0 0 24 24"
-			>
-				<path
-					strokeLinecap="round"
-					strokeLinejoin="round"
-					strokeWidth={2}
-					d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"
-				/>
-			</svg>
-		),
-	},
-	{
-		title: "Parent Portal",
-		description: "Dedicated access for parents to view their child's health records",
-		href: "/schools/parent-portal",
-		icon: (
-			<svg
-				className="w-6 h-6 text-healing-teal"
-				fill="none"
-				stroke="currentColor"
-				viewBox="0 0 24 24"
-			>
-				<path
-					strokeLinecap="round"
-					strokeLinejoin="round"
-					strokeWidth={2}
-					d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"
-				/>
-			</svg>
-		),
-	},
-	{
-		title: 'Emergency Protocols',
-		description: 'Quick access to emergency procedures and contact information',
-		href: '/schools/emergency-protocols',
-		icon: (
-			<svg
-				className="w-6 h-6 text-healing-teal"
-				fill="none"
-				stroke="currentColor"
-				viewBox="0 0 24 24"
-			>
-				<path
-					strokeLinecap="round"
-					strokeLinejoin="round"
-					strokeWidth={2}
-					d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"
-				/>
-			</svg>
-		),
-	},
-	{
-		title: 'Reports Generation',
-		description: 'Generate detailed health reports and statistics for your school',
-		href: '/schools/reports-generation',
-		icon: (
-			<svg
-				className="w-6 h-6 text-healing-teal"
-				fill="none"
-				stroke="currentColor"
-				viewBox="0 0 24 24"
-			>
-				<path
-					strokeLinecap="round"
-					strokeLinejoin="round"
-					strokeWidth={2}
-					d="M9 17v-2m3 2v-4m3 4v-6m2 10H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
-				/>
-			</svg>
-		),
-	},
+  { title: 'Health Records', desc: 'Secure digital storage of student health records with easy access and updates.', href: '/schools/health-records', icon: '📋', color: '#2563EB', bg: '#EFF6FF', border: 'rgba(37,99,235,0.15)' },
+  { title: 'Schedule Management', desc: 'Efficiently plan and manage health check-ups and wellness programs for your school.', href: '/schools/schedule-management', icon: '📅', color: '#0D9488', bg: '#F0FDFA', border: 'rgba(20,184,166,0.18)' },
+  { title: 'Analytics Dashboard', desc: 'Comprehensive health analytics and real-time insights for administrators.', href: '/schools/analytics-dashboard', icon: '📊', color: '#0284C7', bg: '#F0F9FF', border: 'rgba(56,189,248,0.18)' },
+  { title: 'Parent Portal', desc: "Dedicated access for parents to view their child's health records and updates.", href: '/schools/parent-portal', icon: '👨‍👩‍👦', color: '#16A34A', bg: '#F0FDF4', border: 'rgba(34,197,94,0.18)' },
+  { title: 'Emergency Protocols', desc: 'Quick access to emergency procedures and instant contact information for staff.', href: '/schools/emergency-protocols', icon: '🚨', color: '#D97706', bg: '#FFFBEB', border: 'rgba(245,158,11,0.20)' },
+  { title: 'Reports Generation', desc: 'Generate detailed health reports and statistics for your school on demand.', href: '/schools/reports-generation', icon: '📈', color: '#7C3AED', bg: '#F5F3FF', border: 'rgba(124,58,237,0.15)' },
+];
+
+const steps = [
+  { num: '1', title: 'Register', desc: 'Complete the school registration form with your institution details.' },
+  { num: '2', title: 'Verify', desc: "Verify your school's credentials and documentation with our team." },
+  { num: '3', title: 'Setup', desc: 'Configure your portal, import student data, and customize settings.' },
+  { num: '4', title: 'Launch', desc: "Go live and start managing your school's health programs effortlessly." },
 ];
 
 export default function SchoolsPage() {
-	
-	const router = useRouter();
+  const router = useRouter();
 
-	const handleScheduleDemo = () => {
-		router.push('/book-checkup');
-	};
+  return (
+    <>
+      <PageHero
+        eyebrow="For Schools"
+        title="Comprehensive School"
+        highlight="Health Management"
+        subtitle="Transform your school's healthcare system with our integrated digital solutions. Streamline health records, scheduling, and emergency protocols — all in one intuitive platform."
+        cta={{ label: 'Schedule Demo', href: '/book-checkup' }}
+        ctaSecondary={{ label: 'View Pricing', href: '/pricing' }}
+      />
 
-	return (
-		<>
-			{/* Hero Section */}
-			<section className="relative bg-gradient-to-br from-trust-navy to-healing-teal/90 text-clinic-white py-32 overflow-hidden">
-				<div className="absolute inset-0 bg-grid-pattern opacity-10"></div>
-				<div className="max-w-7xl mx-auto px-6 relative">
-					<div className="grid lg:grid-cols-2 gap-12 items-center">
-						<div>
-							<motion.h1
-								initial={{ opacity: 0, y: 20 }}
-								animate={{ opacity: 1, y: 0 }}
-								className="text-4xl md:text-5xl font-bold mb-8"
-							>
-								Comprehensive School Health Management
-							</motion.h1>
-							<motion.p
-								initial={{ opacity: 0, y: 20 }}
-								animate={{ opacity: 1, y: 0 }}
-								transition={{ delay: 0.1 }}
-								className="text-clinic-white/90 text-xl leading-relaxed mb-12"
-							>
-								Transform your school&apos;s healthcare system with our integrated
-								digital solutions. Streamline health records, scheduling, and
-								emergency protocols all in one place.
-							</motion.p>
-						</div>
+      {/* Image mosaic */}
+      <div
+        style={{
+          display: 'grid',
+          gridTemplateColumns: 'repeat(4, 1fr)',
+          gap: '12px',
+          borderRadius: '18px',
+          overflow: 'hidden',
+          marginBottom: '48px',
+          height: '260px',
+        }}
+      >
+        {[
+          '/images/schools/School Health Checkup.png',
+          '/images/schools/Digital Vision Screening.png',
+          '/images/schools/School Dental Checkup.png',
+          '/images/schools/Indian Health Education Class.png',
+        ].map((src, i) => (
+          <div key={i} style={{ position: 'relative', overflow: 'hidden', borderRadius: '12px' }}>
+            <Image src={src} alt={`School health ${i + 1}`} fill className="object-cover" style={{ transition: 'transform 0.3s' }} sizes="25vw" />
+          </div>
+        ))}
+      </div>
 
-						<motion.div
-							initial={{ opacity: 0, scale: 0.9 }}
-							animate={{ opacity: 1, scale: 1 }}
-							transition={{ delay: 0.2 }}
-							className="grid grid-cols-2 gap-4"
-						>
-							<div className="space-y-4">
-								<div className="relative h-48 rounded-lg overflow-hidden">
-									<Image
-										src="/images/schools/School Health Checkup.png"
-										alt="School Health Checkup"
-										fill
-										className="object-cover transform hover:scale-105 transition-transform duration-300"
-									/>
-								</div>
-								<div className="relative h-48 rounded-lg overflow-hidden">
-									<Image
-										src="/images/schools/Digital Vision Screening.png"
-										alt="Digital Vision Screening"
-										fill
-										sizes="(max-width: 768px) 100vw, 50vw"
-										className="object-cover transform hover:scale-105 transition-transform duration-300"
-									/>
-								</div>
-							</div>
-							<div className="space-y-4 pt-8">
-								<div className="relative h-48 rounded-lg overflow-hidden">
-									<Image
-										src="/images/schools/School Dental Checkup.png"
-										alt="School Dental Checkup"
-										fill
-										sizes="(max-width: 768px) 100vw, 50vw"
-										className="object-cover transform hover:scale-105 transition-transform duration-300"
-									/>
-								</div>
-								<div className="relative h-48 rounded-lg overflow-hidden">
-									<Image
-										src="/images/schools/Indian Health Education Class.png"
-										alt="Health Education Class"
-										fill
-										sizes="(max-width: 768px) 100vw, 50vw"
-										className="object-cover transform hover:scale-105 transition-transform duration-300"
-									/>
-								</div>
-							</div>
-						</motion.div>
-					</div>
-				</div>
-			</section>
+      {/* Features grid */}
+      <div style={{ marginBottom: '48px' }}>
+        <div style={{ display: 'flex', alignItems: 'center', gap: '8px', fontSize: '12px', fontWeight: 600, color: '#0D9488', letterSpacing: '2px', textTransform: 'uppercase' as const, marginBottom: '14px', fontFamily: "'DM Sans', sans-serif" }}>
+          <span style={{ display: 'inline-block', width: '20px', height: '2px', background: '#14B8A6', borderRadius: '2px' }} />
+          Platform Features
+        </div>
+        <h2 style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: 'clamp(24px, 3.5vw, 38px)', fontWeight: 800, letterSpacing: '-1px', color: '#0F2942', marginBottom: '28px' }}>
+          Everything You Need for School Healthcare
+        </h2>
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))', gap: '16px' }}>
+          {features.map((f) => (
+            <Link key={f.title} href={f.href} style={{ textDecoration: 'none' }}>
+              <div
+                className="ig-feature-card"
+                style={{
+                  padding: '24px', borderRadius: '16px',
+                  border: `1.5px solid ${f.border}`, background: '#FFFFFF',
+                  transition: 'all 0.26s', cursor: 'pointer',
+                  boxShadow: '0 2px 10px rgba(0,0,0,0.04)', height: '100%',
+                }}
+              >
+                <div style={{ width: '42px', height: '42px', borderRadius: '11px', background: f.bg, border: `1.5px solid ${f.border}`, display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '18px', marginBottom: '14px' }}>{f.icon}</div>
+                <div style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: '15px', fontWeight: 700, color: '#0F2942', marginBottom: '7px' }}>{f.title}</div>
+                <div style={{ fontSize: '13px', color: '#3D5A73', lineHeight: 1.65, fontFamily: "'DM Sans', sans-serif" }}>{f.desc}</div>
+                <div style={{ marginTop: '14px', fontSize: '13px', fontWeight: 600, color: f.color, fontFamily: "'DM Sans', sans-serif" }}>Explore →</div>
+              </div>
+            </Link>
+          ))}
+        </div>
+      </div>
 
-			{/* Features Grid */}
-			<section className="py-32 bg-gradient-to-b from-clinic-white to-healing-teal/5 dark:from-soft-charcoal dark:to-healing-teal/10">
-				<div className="max-w-7xl mx-auto px-6">
-					<motion.div
-						initial={{ opacity: 0, y: 20 }}
-						whileInView={{ opacity: 1, y: 0 }}
-						viewport={{ once: true }}
-						className="text-center mb-20"
-					>
-						<h2 className="text-3xl md:text-4xl font-bold mb-6">
-							Everything You Need for School Healthcare
-						</h2>
-						<p className="text-soft-charcoal/80 dark:text-clinic-white/80 max-w-2xl mx-auto text-lg">
-							Explore our comprehensive suite of tools designed specifically for
-							school health management
-						</p>
-					</motion.div>
+      {/* Getting Started Steps */}
+      <div
+        style={{
+          borderRadius: '20px',
+          background: 'linear-gradient(160deg, #F0FDFA 0%, #EFF6FF 100%)',
+          border: '1.5px solid rgba(20,184,166,0.15)',
+          padding: '48px',
+          marginBottom: '48px',
+        }}
+      >
+        <div style={{ display: 'flex', alignItems: 'center', gap: '8px', fontSize: '12px', fontWeight: 600, color: '#0D9488', letterSpacing: '2px', textTransform: 'uppercase' as const, marginBottom: '14px', fontFamily: "'DM Sans', sans-serif" }}>
+          <span style={{ display: 'inline-block', width: '20px', height: '2px', background: '#14B8A6', borderRadius: '2px' }} />
+          Getting Started
+        </div>
+        <h2 style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: 'clamp(22px, 3vw, 34px)', fontWeight: 800, letterSpacing: '-1px', color: '#0F2942', marginBottom: '32px' }}>
+          Up and Running in 4 Steps
+        </h2>
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '16px' }}>
+          {steps.map((step) => (
+            <div key={step.num} style={{ padding: '24px', borderRadius: '14px', background: '#FFFFFF', border: '1.5px solid rgba(37,99,235,0.10)', position: 'relative', boxShadow: '0 2px 10px rgba(0,0,0,0.04)' }}>
+              <div style={{ width: '32px', height: '32px', borderRadius: '50%', background: 'linear-gradient(135deg, #2563EB, #14B8A6)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '13px', fontWeight: 800, color: '#fff', fontFamily: "'Space Grotesk', sans-serif", marginBottom: '14px', boxShadow: '0 2px 10px rgba(37,99,235,0.25)' }}>
+                {step.num}
+              </div>
+              <div style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: '15px', fontWeight: 700, color: '#0F2942', marginBottom: '7px' }}>{step.title}</div>
+              <div style={{ fontSize: '13px', color: '#3D5A73', lineHeight: 1.65, fontFamily: "'DM Sans', sans-serif" }}>{step.desc}</div>
+            </div>
+          ))}
+        </div>
+      </div>
 
-					<div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-						{features.map((feature, index) => (
-							<motion.div
-								key={feature.title}
-								initial={{ opacity: 0, y: 20 }}
-								whileInView={{ opacity: 1, y: 0 }}
-								viewport={{ once: true }}
-								transition={{ delay: index * 0.1 }}
-							>
-								<Link
-									href={feature.href}
-									className="block bg-white dark:bg-soft-charcoal/50 rounded-xl p-8 shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300"
-								>
-									<div className="w-14 h-14 rounded-lg bg-healing-teal/10 flex items-center justify-center mb-6">
-										{feature.icon}
-									</div>
-									<h3 className="text-xl font-semibold mb-4">
-										{feature.title}
-									</h3>
-									<p className="text-soft-charcoal/80 dark:text-clinic-white/70">
-										{feature.description}
-									</p>
-								</Link>
-							</motion.div>
-						))}
-					</div>
-				</div>
-			</section>
+      {/* CTA Banner */}
+      <div style={{ borderRadius: '20px', background: 'linear-gradient(135deg, #2563EB 0%, #14B8A6 100%)', padding: '48px', textAlign: 'center', position: 'relative', overflow: 'hidden' }}>
+        <div style={{ position: 'absolute', top: '-50px', right: '-50px', width: '200px', height: '200px', borderRadius: '50%', background: 'rgba(255,255,255,0.07)', pointerEvents: 'none' }} />
+        <h2 style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: 'clamp(22px, 3.5vw, 36px)', fontWeight: 800, color: '#fff', marginBottom: '12px', position: 'relative' }}>Ready to Transform Your School?</h2>
+        <p style={{ fontSize: '16px', color: 'rgba(255,255,255,0.88)', marginBottom: '28px', fontFamily: "'DM Sans', sans-serif", position: 'relative' }}>Join 500+ schools already using our digital health management platform.</p>
+        <div style={{ display: 'flex', gap: '12px', justifyContent: 'center', flexWrap: 'wrap', position: 'relative' }}>
+          <button onClick={() => router.push('/book-checkup')} style={{ padding: '13px 28px', borderRadius: '10px', fontSize: '15px', fontWeight: 700, color: '#2563EB', cursor: 'pointer', border: 'none', background: '#FFFFFF', boxShadow: '0 4px 16px rgba(0,0,0,0.15)', fontFamily: "'DM Sans', sans-serif" }}>Schedule Demo →</button>
+          <button onClick={() => router.push('/contact')} style={{ padding: '13px 24px', borderRadius: '10px', fontSize: '15px', fontWeight: 600, color: '#fff', cursor: 'pointer', border: '2px solid rgba(255,255,255,0.45)', background: 'rgba(255,255,255,0.10)', fontFamily: "'DM Sans', sans-serif" }}>Contact Sales</button>
+        </div>
+      </div>
 
-			{/* Process Steps */}
-			<section className="py-32 bg-gradient-to-br from-healing-teal/5 to-trust-navy/5 dark:from-healing-teal/10 dark:to-trust-navy/20">
-				<div className="max-w-7xl mx-auto px-6">
-					<motion.div
-						initial={{ opacity: 0, y: 20 }}
-						whileInView={{ opacity: 1, y: 0 }}
-						viewport={{ once: true }}
-						className="text-center mb-20"
-					>
-						<h2 className="text-3xl md:text-4xl font-bold mb-6">
-							Getting Started
-						</h2>
-						<p className="text-soft-charcoal/80 dark:text-clinic-white/80 max-w-2xl mx-auto text-lg">
-							Follow these simple steps to set up your school&apos;s health
-							management system
-						</p>
-					</motion.div>
-					<div className="grid md:grid-cols-4 gap-8">
-						{[
-							{
-								step: '1',
-								title: 'Register',
-								description:
-									'Complete the school registration form with basic details',
-								icon: (
-									<svg
-										className="w-6 h-6 text-healing-teal"
-										fill="none"
-										stroke="currentColor"
-										viewBox="0 0 24 24"
-									>
-										<path
-											strokeLinecap="round"
-											strokeLinejoin="round"
-											strokeWidth={2}
-											d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
-										/>
-									</svg>
-								),
-							},
-							{
-								step: '2',
-								title: 'Verify',
-								description:
-									'Verify your school\'s credentials and documentation',
-								icon: (
-									<svg
-										className="w-6 h-6 text-healing-teal"
-										fill="none"
-										stroke="currentColor"
-										viewBox="0 0 24 24"
-									>
-										<path
-											strokeLinecap="round"
-											strokeLinejoin="round"
-											strokeWidth={2}
-											d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
-										/>
-									</svg>
-								),
-							},
-							{
-								step: '3',
-								title: 'Setup',
-								description:
-									'Set up your portal account and customize settings',
-								icon: (
-									<svg
-										className="w-6 h-6 text-healing-teal"
-										fill="none"
-										stroke="currentColor"
-										viewBox="0 0 24 24"
-									>
-										<path
-											strokeLinecap="round"
-											strokeLinejoin="round"
-											strokeWidth={2}
-											d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"
-										/>
-										<path
-											strokeLinecap="round"
-											strokeLinejoin="round"
-											strokeWidth={2}
-											d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"
-										/>
-									</svg>
-								),
-							},
-							{
-								step: '4',
-								title: 'Launch',
-								description: 'Start managing your school\'s health programs',
-								icon: (
-									<svg
-										className="w-6 h-6 text-healing-teal"
-										fill="none"
-										stroke="currentColor"
-										viewBox="0 0 24 24"
-									>
-										<path
-											strokeLinecap="round"
-											strokeLinejoin="round"
-											strokeWidth={2}
-											d="M13 10V3L4 14h7v7l9-11h-7z"
-										/>
-									</svg>
-								),
-							},
-						].map((step, index) => (
-							<motion.div
-								key={index}
-								initial={{ opacity: 0, y: 20 }}
-								whileInView={{ opacity: 1, y: 0 }}
-								viewport={{ once: true }}
-								transition={{ delay: index * 0.2 }}
-								className="relative bg-white dark:bg-soft-charcoal/50 rounded-xl p-8 shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300"
-							>
-								<div className="absolute -top-4 left-8 bg-healing-teal text-white text-sm font-bold w-8 h-8 rounded-full flex items-center justify-center">
-									{step.step}
-								</div>
-								<div className="w-16 h-16 rounded-full bg-healing-teal/10 flex items-center justify-center mx-auto mb-6 transform hover:rotate-6 transition-transform">
-									{step.icon}
-								</div>
-								<h3 className="text-xl font-semibold text-center mb-4">
-									{step.title}
-								</h3>
-								<p className="text-soft-charcoal/80 dark:text-clinic-white/70 text-center leading-relaxed">
-									{step.description}
-								</p>
-							</motion.div>
-						))}
-					</div>
-				</div>
-			</section>
-
-			{/* Call to Action */}
-			<section className="py-32 bg-gradient-to-br from-clinic-white via-healing-teal/5 to-clinic-white dark:from-soft-charcoal dark:via-healing-teal/10 dark:to-soft-charcoal relative overflow-hidden">
-				<div className="absolute inset-0 bg-grid-pattern opacity-5"></div>
-				<div className="max-w-7xl mx-auto px-6 text-center relative">
-					<motion.div
-						initial={{ opacity: 0, y: 20 }}
-						whileInView={{ opacity: 1, y: 0 }}
-						viewport={{ once: true }}
-						className="max-w-3xl mx-auto"
-					>
-						<h2 className="text-3xl md:text-4xl font-bold mb-8">
-							Ready to Transform Your School&apos;s Health Management?
-						</h2>
-						<p className="text-soft-charcoal/80 dark:text-clinic-white/80 text-xl mb-12 leading-relaxed">
-							Join hundreds of schools already using our digital health management
-							platform.
-						</p>
-						<div className="flex flex-col sm:flex-row gap-6 justify-center">
-							<button onClick={handleScheduleDemo} className="btn-primary px-8 py-4 text-lg shadow-xl hover:shadow-2xl transform hover:-translate-y-1 transition-all duration-300">
-								Schedule Demo
-							</button>
-							<button className="btn-secondary px-8 py-4 text-lg border-2 border-healing-teal/20 hover:bg-healing-teal/5 transition-all duration-300">
-								Contact Sales
-							</button>
-						</div>
-					</motion.div>
-				</div>
-			</section>
-		</>
-	);
+      <style jsx>{`
+        .ig-feature-card:hover { transform: translateY(-4px); box-shadow: 0 12px 32px rgba(37,99,235,0.10) !important; }
+      `}</style>
+    </>
+  );
 }

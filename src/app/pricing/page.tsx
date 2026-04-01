@@ -1,144 +1,166 @@
 'use client';
 
-import PricingTable from '../components/PricingTable';
-import { motion } from 'framer-motion';
+import { useRouter } from 'next/navigation';
+import PageHero from '../components/PageHero';
+
+const plans = [
+  {
+    name: 'Starter',
+    price: '₹9,999',
+    period: '/month',
+    desc: 'Perfect for small schools getting started with digital health management.',
+    color: '#2563EB', bg: '#EFF6FF', border: 'rgba(37,99,235,0.15)',
+    features: ['Up to 500 students', 'Basic health records', 'AI health screening', 'Parent notifications', 'Monthly reports', 'Email support'],
+    cta: 'Get Started',
+    popular: false,
+  },
+  {
+    name: 'Professional',
+    price: '₹24,999',
+    period: '/month',
+    desc: 'Comprehensive solution for mid-size institutions with advanced analytics.',
+    color: '#FFFFFF', bg: 'linear-gradient(135deg, #2563EB 0%, #14B8A6 100%)', border: 'transparent',
+    features: ['Up to 2,000 students', 'Full health records', 'AI-powered diagnostics', 'Real-time alerts', 'Custom reports', 'Telemedicine access', 'Priority support', 'Parent portal'],
+    cta: 'Start Free Trial',
+    popular: true,
+  },
+  {
+    name: 'Enterprise',
+    price: 'Custom',
+    period: '',
+    desc: 'Tailored solution for large institutions and school districts.',
+    color: '#0D9488', bg: '#F0FDFA', border: 'rgba(20,184,166,0.18)',
+    features: ['Unlimited students', 'All Professional features', 'Custom integrations', 'Dedicated account manager', 'On-site training', 'SLA guarantees', '24/7 phone support', 'Custom branding'],
+    cta: 'Contact Sales',
+    popular: false,
+  },
+];
+
+const faqs = [
+  { q: "What's included in the basic plan?", a: "The Starter plan includes essential health monitoring features suitable for small to medium-sized schools, including student health records, basic analytics, and emergency notifications." },
+  { q: "Can I upgrade or downgrade my plan?", a: "Yes, you can change your plan at any time. We'll prorate any charges or credits based on your billing cycle." },
+  { q: "Do you offer custom enterprise solutions?", a: "Yes, we offer customized solutions for large institutions with specific requirements. Contact our sales team to discuss your needs." },
+  { q: "Is there a setup fee?", a: "No hidden fees. The price you see is what you pay, and it includes full setup and onboarding support." },
+];
 
 export default function PricingPage() {
+  const router = useRouter();
+
   return (
     <>
-      {/* Hero Section */}
-      <section className="relative min-h-[60vh] flex items-center bg-gradient-to-br from-trust-navy via-trust-navy/95 to-healing-teal/90 text-clinic-white py-24 overflow-hidden">
-        <div className="absolute inset-0 bg-[url('/bg-noise.svg')] opacity-5"></div>
-        {/* Add animated circles in the background */}
-        <div className="absolute inset-0 overflow-hidden">
-          <div className="absolute -top-40 -right-40 w-96 h-96 rounded-full bg-healing-teal/20 blur-3xl animate-float"></div>
-          <div className="absolute -bottom-20 -left-20 w-72 h-72 rounded-full bg-trust-navy/30 blur-3xl animate-float-delayed"></div>
-        </div>
-        <div className="max-w-7xl mx-auto px-6">
-          <div className="max-w-3xl relative">
-            <div className="absolute -left-4 -top-4 w-20 h-20 bg-healing-teal/10 rounded-full blur-xl"></div>
-            <motion.h1 
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              className="text-6xl md:text-7xl font-bold mb-8"
-            >
-              Simple, Transparent
-              <span className="block mt-2 bg-gradient-to-r from-healing-teal to-clinic-white bg-clip-text text-transparent">
-                Pricing
-              </span>
-            </motion.h1>
-            <motion.p 
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.1 }}
-              className="text-clinic-white/90 text-xl leading-relaxed mb-12"
-            >
-              Choose the perfect plan for your school&apos;s health monitoring needs. All plans include our core health services and AI-powered analytics.
-            </motion.p>
-          </div>
-        </div>
-      </section>
+      <PageHero
+        eyebrow="Pricing"
+        title="Simple, Transparent"
+        highlight="Pricing"
+        subtitle="Choose the perfect plan for your school's health monitoring needs. All plans include our core AI health services and dedicated support."
+      />
 
-      {/* Pricing Section */}
-      <section className="py-24 bg-gradient-to-b from-clinic-white via-clinic-white to-healing-teal/5 dark:from-soft-charcoal dark:via-soft-charcoal dark:to-healing-teal/10">
-        <div className="max-w-7xl mx-auto px-6">
-          <motion.div 
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="text-center mb-16"
-          >
-            <span className="text-healing-teal text-sm uppercase tracking-wider font-semibold mb-4 block">Our Plans</span>
-            <h2 className="text-4xl md:text-5xl font-bold mb-6 bg-gradient-to-r from-trust-navy to-healing-teal bg-clip-text text-transparent">
-              Choose Your Plan
-            </h2>
-            <p className="text-soft-charcoal/80 dark:text-clinic-white/80 max-w-2xl mx-auto text-lg">
-              Select the perfect plan that matches your institution&apos;s needs and scale
-            </p>
-          </motion.div>
-          <PricingTable />
-        </div>
-      </section>
+      {/* Plans */}
+      <div
+        style={{
+          display: 'grid',
+          gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
+          gap: '20px',
+          marginBottom: '60px',
+          alignItems: 'stretch',
+        }}
+      >
+        {plans.map((plan) => {
+          const isPopular = plan.popular;
+          return (
+            <div
+              key={plan.name}
+              style={{
+                borderRadius: '20px',
+                border: isPopular ? 'none' : `1.5px solid ${plan.border}`,
+                background: isPopular ? plan.bg : '#FFFFFF',
+                padding: '32px',
+                position: 'relative',
+                boxShadow: isPopular ? '0 12px 40px rgba(37,99,235,0.28)' : '0 2px 14px rgba(0,0,0,0.04)',
+                display: 'flex',
+                flexDirection: 'column',
+                transition: 'all 0.28s',
+              }}
+              className="ig-plan-card"
+            >
+              {isPopular && (
+                <div style={{ position: 'absolute', top: '-12px', left: '50%', transform: 'translateX(-50%)', background: '#F59E0B', color: '#fff', fontSize: '11px', fontWeight: 700, padding: '4px 14px', borderRadius: '100px', letterSpacing: '0.5px', fontFamily: "'Space Grotesk', sans-serif", whiteSpace: 'nowrap' }}>
+                  MOST POPULAR
+                </div>
+              )}
+              <div style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: '14px', fontWeight: 700, color: isPopular ? 'rgba(255,255,255,0.75)' : '#7A99B4', letterSpacing: '1px', textTransform: 'uppercase', marginBottom: '8px' }}>
+                {plan.name}
+              </div>
+              <div style={{ display: 'flex', alignItems: 'flex-end', gap: '4px', marginBottom: '8px' }}>
+                <span style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: 'clamp(28px, 4vw, 40px)', fontWeight: 800, color: isPopular ? '#fff' : '#0F2942', letterSpacing: '-1px' }}>{plan.price}</span>
+                <span style={{ fontSize: '14px', color: isPopular ? 'rgba(255,255,255,0.70)' : '#7A99B4', fontFamily: "'DM Sans', sans-serif", marginBottom: '6px' }}>{plan.period}</span>
+              </div>
+              <p style={{ fontSize: '14px', color: isPopular ? 'rgba(255,255,255,0.80)' : '#3D5A73', lineHeight: 1.6, fontFamily: "'DM Sans', sans-serif", marginBottom: '24px' }}>{plan.desc}</p>
 
-      {/* FAQ Section */}
-      <section className="py-24 bg-gradient-to-b from-healing-teal/5 via-healing-teal/10 to-healing-teal/5 dark:from-healing-teal/10 dark:via-healing-teal/5 dark:to-healing-teal/10">
-        <div className="max-w-7xl mx-auto px-6">
-          <motion.div 
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="text-center mb-16"
-          >
-            <span className="text-healing-teal text-sm uppercase tracking-wider font-semibold mb-4 block">FAQ</span>
-            <h2 className="text-4xl md:text-5xl font-bold mb-6 bg-gradient-to-r from-trust-navy to-healing-teal bg-clip-text text-transparent">
-              Frequently Asked Questions
-            </h2>
-          </motion.div>
-          <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-            {faqs.map((faq, index) => (
-              <motion.div
-                key={faq.question}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: index * 0.1 }}
-                className="group bg-white dark:bg-soft-charcoal/30 rounded-2xl p-8 shadow-lg hover:shadow-2xl transform hover:-translate-y-1 transition-all duration-300 border border-healing-teal/10 hover:border-healing-teal/30"
+              <ul style={{ listStyle: 'none', padding: 0, margin: '0 0 28px', flex: 1 }}>
+                {plan.features.map((f) => (
+                  <li key={f} style={{ display: 'flex', alignItems: 'center', gap: '9px', padding: '6px 0', fontSize: '14px', color: isPopular ? 'rgba(255,255,255,0.88)' : '#3D5A73', fontFamily: "'DM Sans', sans-serif", borderBottom: `1px solid ${isPopular ? 'rgba(255,255,255,0.10)' : 'rgba(0,0,0,0.04)'}` }}>
+                    <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+                      <circle cx="7" cy="7" r="7" fill={isPopular ? 'rgba(255,255,255,0.20)' : 'rgba(34,197,94,0.12)'} />
+                      <path d="M4 7l2 2 4-4" stroke={isPopular ? '#fff' : '#22C55E'} strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+                    </svg>
+                    {f}
+                  </li>
+                ))}
+              </ul>
+
+              <button
+                onClick={() => router.push(plan.name === 'Enterprise' ? '/contact' : '/book-checkup')}
+                style={{
+                  padding: '13px 24px', borderRadius: '10px', fontSize: '15px', fontWeight: 700,
+                  color: isPopular ? '#2563EB' : '#fff',
+                  cursor: 'pointer', border: 'none',
+                  background: isPopular ? '#FFFFFF' : 'linear-gradient(135deg, #2563EB 0%, #14B8A6 100%)',
+                  boxShadow: isPopular ? '0 4px 16px rgba(0,0,0,0.15)' : '0 4px 16px rgba(37,99,235,0.25)',
+                  transition: 'all 0.25s', fontFamily: "'DM Sans', sans-serif", width: '100%',
+                }}
               >
-                <h3 className="text-xl font-bold mb-4 text-trust-navy dark:text-clinic-white group-hover:text-healing-teal transition-colors duration-300">{faq.question}</h3>
-                <p className="text-soft-charcoal/80 dark:text-clinic-white/80">{faq.answer}</p>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Contact CTA */}
-      <section className="py-24 bg-gradient-to-br from-trust-navy via-trust-navy/95 to-healing-teal/90 text-clinic-white relative overflow-hidden">
-        <div className="absolute inset-0 bg-[url('/bg-noise.svg')] opacity-5"></div>
-        <div className="absolute inset-0 overflow-hidden">
-          <div className="absolute -top-40 -right-40 w-96 h-96 rounded-full bg-healing-teal/20 blur-3xl animate-float"></div>
-          <div className="absolute -bottom-20 -left-20 w-72 h-72 rounded-full bg-trust-navy/30 blur-3xl animate-float-delayed"></div>
-        </div>
-        <div className="max-w-7xl mx-auto px-6 text-center relative">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-          >
-            <h2 className="text-4xl md:text-5xl font-bold mb-8">Need a Custom Solution?</h2>
-            <p className="text-xl mb-12 max-w-2xl mx-auto text-clinic-white/90">
-              Contact our team for personalized pricing options tailored to your institution&apos;s specific requirements.
-            </p>
-            <div className="flex gap-4 justify-center">
-              <button className="btn-primary px-8 py-4 text-lg shadow-xl hover:shadow-2xl transform hover:-translate-y-1 transition-all">
-                Contact Sales
-              </button>
-              <button className="btn-secondary px-8 py-4 text-lg border-2 border-healing-teal/20 hover:bg-healing-teal/5 transition-all">
-                Download Brochure
+                {plan.cta} →
               </button>
             </div>
-          </motion.div>
+          );
+        })}
+      </div>
+
+      {/* FAQ */}
+      <div style={{ marginBottom: '48px' }}>
+        <div style={{ display: 'flex', alignItems: 'center', gap: '8px', fontSize: '12px', fontWeight: 600, color: '#0D9488', letterSpacing: '2px', textTransform: 'uppercase' as const, marginBottom: '14px', fontFamily: "'DM Sans', sans-serif" }}>
+          <span style={{ display: 'inline-block', width: '20px', height: '2px', background: '#14B8A6', borderRadius: '2px' }} />
+          FAQ
         </div>
-      </section>
+        <h2 style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: 'clamp(24px, 3.5vw, 36px)', fontWeight: 800, letterSpacing: '-1px', color: '#0F2942', marginBottom: '28px' }}>
+          Frequently Asked Questions
+        </h2>
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '16px' }}>
+          {faqs.map((faq) => (
+            <div key={faq.q} style={{ padding: '24px', borderRadius: '16px', border: '1.5px solid rgba(37,99,235,0.10)', background: '#FFFFFF', boxShadow: '0 2px 10px rgba(0,0,0,0.04)', transition: 'all 0.25s' }} className="ig-faq-card">
+              <h3 style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: '15px', fontWeight: 700, color: '#0F2942', marginBottom: '10px' }}>{faq.q}</h3>
+              <p style={{ fontSize: '14px', color: '#3D5A73', lineHeight: 1.65, fontFamily: "'DM Sans', sans-serif" }}>{faq.a}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {/* CTA Banner */}
+      <div style={{ borderRadius: '20px', background: 'linear-gradient(135deg, #2563EB 0%, #14B8A6 100%)', padding: '48px', textAlign: 'center', position: 'relative', overflow: 'hidden' }}>
+        <div style={{ position: 'absolute', top: '-50px', right: '-50px', width: '200px', height: '200px', borderRadius: '50%', background: 'rgba(255,255,255,0.07)', pointerEvents: 'none' }} />
+        <h2 style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: 'clamp(22px, 3.5vw, 36px)', fontWeight: 800, color: '#fff', marginBottom: '12px', position: 'relative' }}>Need a Custom Solution?</h2>
+        <p style={{ fontSize: '16px', color: 'rgba(255,255,255,0.88)', marginBottom: '28px', fontFamily: "'DM Sans', sans-serif", position: 'relative' }}>Contact our team for personalized pricing tailored to your institution&apos;s specific requirements.</p>
+        <div style={{ display: 'flex', gap: '12px', justifyContent: 'center', flexWrap: 'wrap', position: 'relative' }}>
+          <button onClick={() => router.push('/contact')} style={{ padding: '13px 28px', borderRadius: '10px', fontSize: '15px', fontWeight: 700, color: '#2563EB', cursor: 'pointer', border: 'none', background: '#FFFFFF', boxShadow: '0 4px 16px rgba(0,0,0,0.15)', fontFamily: "'DM Sans', sans-serif" }}>Contact Sales →</button>
+          <button style={{ padding: '13px 24px', borderRadius: '10px', fontSize: '15px', fontWeight: 600, color: '#fff', cursor: 'pointer', border: '2px solid rgba(255,255,255,0.45)', background: 'rgba(255,255,255,0.10)', fontFamily: "'DM Sans', sans-serif" }}>Download Brochure</button>
+        </div>
+      </div>
+
+      <style jsx>{`
+        .ig-plan-card:hover { transform: translateY(-4px); }
+        .ig-faq-card:hover { border-color: rgba(20,184,166,0.30) !important; box-shadow: 0 8px 24px rgba(37,99,235,0.09) !important; }
+      `}</style>
     </>
   );
 }
-
-const faqs = [
-  {
-    question: "What's included in the basic plan?",
-    answer: "The basic plan includes essential health monitoring features suitable for small to medium-sized schools, including student health records, basic analytics, and emergency notifications."
-  },
-  {
-    question: "Can I upgrade or downgrade my plan?",
-    answer: "Yes, you can change your plan at any time. We'll prorate any charges or credits based on your billing cycle."
-  },
-  {
-    question: "Do you offer custom enterprise solutions?",
-    answer: "Yes, we offer customized solutions for large institutions with specific requirements. Contact our sales team to discuss your needs."
-  },
-  {
-    question: "Is there a setup fee?",
-    answer: "No, there are no hidden fees. The price you see is what you pay, and it includes full setup and onboarding support."
-  }
-];

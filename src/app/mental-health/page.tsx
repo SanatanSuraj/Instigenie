@@ -1,401 +1,259 @@
 'use client';
 
-import Link from 'next/link';
 import Image from 'next/image';
+import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { useChat } from '../context/ChatContext';
-
-export default function MentalHealthPage() {
-	const router = useRouter();
-	const { openChat } = useChat();
-
-	const handleScheduleConsultation = () => {
-		router.push('/book-checkup');
-	};
-
-  return (
-    <>
-      {/* Hero Section */}
-      <section className="relative min-h-[80vh] flex items-center bg-gradient-to-br from-trust-navy via-trust-navy/95 to-healing-teal/90 text-clinic-white py-32 overflow-hidden">
-        <div className="absolute inset-0 bg-[url('/bg-noise.svg')] opacity-5 animate-subtle-shift"></div>
-        {/* Add animated circles in the background */}
-        <div className="absolute inset-0 overflow-hidden">
-          <div className="absolute -top-40 -right-40 w-96 h-96 rounded-full bg-healing-teal/20 blur-3xl animate-float"></div>
-          <div className="absolute -bottom-20 -left-20 w-72 h-72 rounded-full bg-trust-navy/30 blur-3xl animate-float-delayed"></div>
-        </div>
-        <div className="max-w-7xl mx-auto px-6 relative">
-          <div className="max-w-3xl relative">
-            <div className="absolute -left-4 -top-4 w-20 h-20 bg-healing-teal/10 rounded-full blur-xl"></div>
-            <h1 className="text-6xl md:text-7xl font-bold mb-8 animate-fadeUp relative">
-              Student Mental 
-              <span className="block mt-2 bg-gradient-to-r from-healing-teal to-clinic-white bg-clip-text text-transparent">
-                Wellness
-              </span>
-            </h1>
-            <p className="text-clinic-white/90 text-xl leading-relaxed mb-12 animate-fadeUp" style={{ animationDelay: '0.1s' }}>
-              Comprehensive mental health support and resources for students, combining professional care with AI-assisted early detection.
-            </p>
-            <div className="flex gap-4 animate-fadeUp" style={{ animationDelay: '0.2s' }}>
-              <button onClick={handleScheduleConsultation} className="btn-primary px-8 py-4 text-lg shadow-xl hover:shadow-2xl transform hover:-translate-y-1 transition-all">
-                Schedule Consultation
-              </button>
-              <button className="btn-secondary px-8 py-4 text-lg border-2 border-healing-teal/20 hover:bg-healing-teal/5 transition-all">
-                Learn More
-              </button>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Services Grid */}
-      <section className="py-24 bg-gradient-to-b from-clinic-white via-clinic-white to-healing-teal/5 dark:from-soft-charcoal dark:via-soft-charcoal dark:to-healing-teal/10">
-        <div className="max-w-7xl mx-auto px-6">
-          <div className="text-center mb-16">
-            <span className="text-healing-teal text-sm uppercase tracking-wider font-semibold mb-4 block">Our Services</span>
-            <h2 className="text-4xl md:text-5xl font-bold mb-6 bg-gradient-to-r from-trust-navy to-healing-teal bg-clip-text text-transparent">
-              Our Mental Health Services
-            </h2>
-            <p className="text-soft-charcoal/80 dark:text-clinic-white/80 max-w-2xl mx-auto text-lg">
-              Comprehensive mental health support tailored for educational institutions
-            </p>
-          </div>
-          <div className="grid md:grid-cols-2 gap-8 lg:gap-12">
-            {services.map((service, index) => (
-              <Link
-                key={service.title}
-                href={service.href}
-                className="block"
-                style={{ animationDelay: `${index * 0.1}s` }}
-              >
-                <div className="group animate-fadeUp bg-white dark:bg-soft-charcoal/30 rounded-2xl p-8 shadow-lg hover:shadow-2xl transform hover:-translate-y-1 transition-all duration-300 border border-healing-teal/10 hover:border-healing-teal/30">
-                  <div className="flex items-start gap-6">
-                    <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-healing-teal/20 to-healing-teal/5 flex items-center justify-center shrink-0 transform -rotate-6 group-hover:rotate-0 transition-transform duration-300">
-                      {service.icon}
-                    </div>
-                    <div className="flex-1">
-                      <h3 className="text-2xl font-bold mb-4 text-trust-navy dark:text-clinic-white group-hover:text-healing-teal transition-colors duration-300">
-                        {service.title}
-                      </h3>
-                      <p className="text-soft-charcoal/80 dark:text-clinic-white/80 text-lg mb-6">
-                        {service.description}
-                      </p>
-                      <ul className="grid grid-cols-2 gap-3">
-                        {service.features.map((feature, idx) => (
-                          <li key={idx} className="flex items-center gap-2 text-soft-charcoal/70 dark:text-clinic-white/70">
-                            <svg className="w-5 h-5 text-healing-teal" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                            </svg>
-                            <span>{feature}</span>
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-                  </div>
-                </div>
-              </Link>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Feature Section */}
-      <section className="py-24 bg-gradient-to-br from-clinic-white via-healing-teal/5 to-clinic-white dark:from-soft-charcoal dark:via-healing-teal/10 dark:to-soft-charcoal overflow-hidden">
-        <div className="max-w-7xl mx-auto px-6">
-          <div className="grid lg:grid-cols-2 gap-12 lg:gap-24 items-center">
-            <div className="relative order-2 lg:order-1">
-              <div className="absolute inset-0 bg-gradient-to-br from-healing-teal/20 to-healing-teal/5 rounded-2xl transform rotate-3"></div>
-              <div className="relative rounded-2xl overflow-hidden">
-                <Image
-                  src="/images/services/Supportive Counseling.png"
-                  alt="Supportive counseling session"
-                  width={600}
-                  height={400}
-                  className="w-full object-cover"
-                />
-              </div>
-            </div>
-            <div className="order-1 lg:order-2">
-              <h2 className="text-3xl md:text-4xl font-bold mb-6">
-                Professional Support When <br />
-                <span className="text-healing-teal">Students Need It Most</span>
-              </h2>
-              <p className="text-soft-charcoal/80 dark:text-clinic-white/80 text-lg mb-8 leading-relaxed">
-                Our team of experienced counselors and mental health professionals provides compassionate support to help students navigate their emotional and psychological well-being.
-              </p>
-              <ul className="space-y-4">
-                {[
-                  "Individual counseling sessions",
-                  "Group therapy workshops",
-                  "Crisis intervention support",
-                  "Stress management techniques"
-                ].map((feature, index) => (
-                  <li key={index} className="flex items-start gap-3">
-                    <svg className="w-6 h-6 text-healing-teal mt-1 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                    </svg>
-                    <span className="text-soft-charcoal/80 dark:text-clinic-white/80">{feature}</span>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Testimonial Section */}
-      <section className="py-24 bg-gradient-to-br from-clinic-white to-healing-teal/5 dark:from-soft-charcoal dark:to-healing-teal/10">
-        <div className="max-w-7xl mx-auto px-6">
-          <div className="grid lg:grid-cols-2 gap-12 lg:gap-24 items-center">
-            <div>
-              <span className="text-healing-teal text-sm uppercase tracking-wider font-semibold mb-4 block">Making a Difference</span>
-              <h2 className="text-3xl md:text-4xl font-bold mb-6">
-                Creating a Supportive <br />
-                <span className="text-healing-teal">Learning Environment</span>
-              </h2>
-              <p className="text-soft-charcoal/80 dark:text-clinic-white/80 text-lg mb-8 leading-relaxed">
-                Our mental health program has helped thousands of students achieve better emotional well-being and academic success through comprehensive support and early intervention.
-              </p>
-              <div className="grid sm:grid-cols-2 gap-6">
-                <div className="p-6 bg-white dark:bg-soft-charcoal/30 rounded-xl border border-healing-teal/10">
-                  <div className="text-3xl font-bold text-healing-teal mb-2">95%</div>
-                  <p className="text-soft-charcoal/80 dark:text-clinic-white/80">Student satisfaction with counseling services</p>
-                </div>
-                <div className="p-6 bg-white dark:bg-soft-charcoal/30 rounded-xl border border-healing-teal/10">
-                  <div className="text-3xl font-bold text-healing-teal mb-2">24/7</div>
-                  <p className="text-soft-charcoal/80 dark:text-clinic-white/80">Access to mental health resources</p>
-                </div>
-              </div>
-            </div>
-            <div className="relative">
-              <div className="absolute inset-0 bg-gradient-to-br from-healing-teal/20 to-healing-teal/5 rounded-2xl transform -rotate-3"></div>
-              <div className="relative rounded-2xl overflow-hidden">
-                <Image
-                  src="/images/schools/Friendly Counseling Session.png"
-                  alt="Friendly counseling session"
-                  width={600}
-                  height={400}
-                  className="w-full object-cover"
-                />
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Wellness Icons Section */}
-      <section className="py-32 bg-gradient-to-b from-healing-teal/5 via-healing-teal/10 to-healing-teal/5 dark:from-healing-teal/10 dark:via-healing-teal/5 dark:to-healing-teal/10">
-        <div className="max-w-7xl mx-auto px-6">
-          <div className="text-center mb-20">
-            <h2 className="text-3xl md:text-4xl font-bold mb-6">Pillars of Mental Wellness</h2>
-            <p className="text-soft-charcoal/80 dark:text-clinic-white/80 max-w-2xl mx-auto">
-              Our holistic approach to student mental health encompasses four key areas
-            </p>
-          </div>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-12">
-            {wellnessIcons.map((item, index) => (
-              <div
-                key={item.title}
-                className="text-center animate-fadeUp group hover:transform hover:scale-105 transition-all duration-300"
-                style={{ animationDelay: `${index * 0.1}s` }}
-              >
-                <div className="w-24 h-24 mx-auto mb-6 rounded-2xl bg-gradient-to-br from-healing-teal/20 to-healing-teal/10 flex items-center justify-center transform rotate-3 group-hover:rotate-6 transition-transform duration-300 shadow-lg">
-                  {item.icon}
-                </div>
-                <h3 className="text-xl font-bold mb-4 text-trust-navy dark:text-clinic-white group-hover:text-healing-teal transition-colors duration-300">{item.title}</h3>
-                <p className="text-soft-charcoal/80 dark:text-clinic-white/80">
-                  {item.description}
-                </p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Resources Section */}
-      <section className="py-32 bg-gradient-to-b from-clinic-white via-healing-teal/5 to-clinic-white dark:from-soft-charcoal dark:via-healing-teal/5 dark:to-soft-charcoal">
-        <div className="max-w-7xl mx-auto px-6">
-          <div className="text-center mb-20">
-            <h2 className="text-3xl md:text-4xl font-bold mb-6">Mental Health Resources</h2>
-            <p className="text-soft-charcoal/80 dark:text-clinic-white/80 max-w-2xl mx-auto">
-              Access our comprehensive collection of mental health resources and support tools
-            </p>
-          </div>
-          <div className="grid md:grid-cols-3 gap-8">
-            {resources.map((resource, index) => (
-              <Link
-                key={resource.title}
-                href={resource.href}
-                className="block group bg-white dark:bg-soft-charcoal/50 rounded-2xl p-8 shadow-lg hover:shadow-xl animate-fadeUp transform hover:-translate-y-1 transition-all duration-300"
-                style={{ animationDelay: `${index * 0.1}s` }}
-              >
-                <div className="w-16 h-16 rounded-xl bg-gradient-to-br from-healing-teal/20 to-healing-teal/5 flex items-center justify-center mb-6 transform -rotate-3 group-hover:rotate-0 transition-transform duration-300">
-                  {resource.icon}
-                </div>
-                <h3 className="text-xl font-bold mb-4 text-trust-navy dark:text-clinic-white group-hover:text-healing-teal transition-colors duration-300">
-                  {resource.title}
-                </h3>
-                <p className="text-soft-charcoal/80 dark:text-clinic-white/80 mb-6">
-                  {resource.description}
-                </p>
-                <div className="text-healing-teal group-hover:text-trust-navy dark:group-hover:text-healing-teal flex items-center gap-2 transition-colors duration-300">
-                  Learn More 
-                  <span className="transform group-hover:translate-x-1 transition-transform duration-300">→</span>
-                </div>
-              </Link>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Emergency Support */}
-      <section className="relative py-16 bg-gradient-to-br from-trust-navy to-trust-navy/95 text-clinic-white overflow-hidden">
-        <div className="absolute inset-0 bg-[url('/bg-noise.svg')] opacity-5"></div>
-        <div className="max-w-7xl mx-auto px-6 relative">
-          <div className="max-w-xl mx-auto text-center">
-            <h3 className="text-2xl md:text-3xl font-bold mb-6">Need Immediate Support?</h3>
-            <p className="text-clinic-white/90 text-lg mb-8">
-              Our mental health professionals are available 24/7 to provide immediate assistance
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <a 
-                href="tel:+917050140340" 
-                className="btn-primary px-8 py-4 text-lg shadow-xl hover:shadow-2xl transform hover:-translate-y-1 transition-all flex items-center justify-center gap-2"
-              >
-                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
-                </svg>
-                Call Helpline
-              </a>
-              <button
-                onClick={openChat}
-                className="btn-secondary px-8 py-4 text-lg border-2 border-healing-teal/20 hover:bg-healing-teal/5 transition-all flex items-center justify-center gap-2"
-              >
-                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
-                </svg>
-                Chat with Counselor
-              </button>
-            </div>
-          </div>
-        </div>
-      </section>
-    </>
-  );
-}
+import PageHero from '../components/PageHero';
 
 const services = [
   {
-    title: "Individual Counseling",
-    description: "One-on-one sessions with qualified mental health professionals in a safe, confidential environment.",
-    href: "/mental-health/individual-counseling",
-    icon: <svg className="w-6 h-6 text-healing-teal" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
-    </svg>,
-    features: [
-      "Personalized support",
-      "Stress management",
-      "Coping strategies",
-      "Academic pressure support"
-    ]
+    title: 'Individual Counseling',
+    desc: 'One-on-one sessions with qualified mental health professionals in a safe, confidential environment.',
+    href: '/mental-health/individual-counseling',
+    icon: '🧘',
+    features: ['Personalized support', 'Stress management', 'Coping strategies', 'Academic pressure support'],
+    color: '#0D9488', bg: '#F0FDFA', border: 'rgba(20,184,166,0.18)',
   },
   {
-    title: "Group Support Sessions",
-    description: "Facilitated group discussions providing peer support and shared learning experiences.",
-    href: "/mental-health/group-support",
-    icon: <svg className="w-6 h-6 text-healing-teal" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
-    </svg>,
-    features: [
-      "Peer support network",
-      "Shared experiences",
-      "Social skills development",
-      "Emotional resilience"
-    ]
+    title: 'Group Support Sessions',
+    desc: 'Facilitated group discussions providing peer support and shared learning experiences.',
+    href: '/mental-health/group-support',
+    icon: '👥',
+    features: ['Peer support network', 'Shared experiences', 'Social skills development', 'Emotional resilience'],
+    color: '#2563EB', bg: '#EFF6FF', border: 'rgba(37,99,235,0.15)',
   },
   {
-    title: "AI-Powered Assessment",
-    description: "Early detection of potential mental health concerns using advanced AI analysis.",
-    href: "/mental-health/ai-assessment",
-    icon: <svg className="w-6 h-6 text-healing-teal" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 19h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v10a2 2 0 002 2zM9 9h6v6H9V9z" />
-    </svg>,
-    features: [
-      "Early detection",
-      "Behavioral analysis",
-      "Progress tracking",
-      "Personalized insights"
-    ]
+    title: 'AI-Powered Assessment',
+    desc: 'Early detection of potential mental health concerns using advanced AI analysis and behavioral tracking.',
+    href: '/mental-health/ai-assessment',
+    icon: '🤖',
+    features: ['Early detection', 'Behavioral analysis', 'Progress tracking', 'Personalized insights'],
+    color: '#0284C7', bg: '#F0F9FF', border: 'rgba(56,189,248,0.18)',
   },
   {
-    title: "Parent Consultation",
-    description: "Regular updates and guidance for parents to support their child's mental wellbeing.",
-    href: "/mental-health/parent-consultation",
-    icon: <svg className="w-6 h-6 text-healing-teal" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z" />
-    </svg>,
-    features: [
-      "Regular updates",
-      "Parenting guidance",
-      "Communication strategies",
-      "Home support tips"
-    ]
-  }
+    title: 'Parent Consultation',
+    desc: 'Regular updates and guidance for parents to support their child\'s mental wellbeing at home.',
+    href: '/mental-health/parent-consultation',
+    icon: '👨‍👩‍👦',
+    features: ['Regular updates', 'Parenting guidance', 'Communication strategies', 'Home support tips'],
+    color: '#16A34A', bg: '#F0FDF4', border: 'rgba(34,197,94,0.18)',
+  },
 ];
 
-const wellnessIcons = [
-  {
-    title: "Emotional Balance",
-    description: "Understanding and managing emotions effectively",
-    icon: <svg className="w-8 h-8 text-healing-teal" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14.828 14.828a4 4 0 01-5.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-    </svg>
-  },
-  {
-    title: "Mental Clarity",
-    description: "Developing focus and cognitive wellness",
-    icon: <svg className="w-8 h-8 text-healing-teal" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
-    </svg>
-  },
-  {
-    title: "Social Connection",
-    description: "Building meaningful relationships",
-    icon: <svg className="w-8 h-8 text-healing-teal" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z" />
-    </svg>
-  },
-  {
-    title: "Self Growth",
-    description: "Personal development and resilience",
-    icon: <svg className="w-8 h-8 text-healing-teal" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
-    </svg>
-  }
+const pillars = [
+  { icon: '😊', title: 'Emotional Balance', desc: 'Understanding and managing emotions effectively for daily life.' },
+  { icon: '🧠', title: 'Mental Clarity', desc: 'Developing focus and cognitive wellness through evidence-based methods.' },
+  { icon: '🤝', title: 'Social Connection', desc: 'Building meaningful relationships and a supportive peer network.' },
+  { icon: '🌱', title: 'Self Growth', desc: 'Personal development, resilience, and lifelong mental health habits.' },
 ];
 
 const resources = [
-  {
-    title: "Self-Help Tools",
-    description: "Access our library of mental wellness resources, including guided meditations and stress management techniques.",
-    href: "/mental-health/resources/self-help",
-    icon: <svg className="w-6 h-6 text-healing-teal" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
-    </svg>
-  },
-  {
-    title: "Educational Materials",
-    description: "Learn about mental health through our curated collection of articles, videos, and interactive modules.",
-    href: "/mental-health/resources/educational",
-    icon: <svg className="w-6 h-6 text-healing-teal" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
-    </svg>
-  },
-  {
-    title: "Crisis Support",
-    description: "Immediate assistance and resources for students experiencing mental health emergencies.",
-    href: "/mental-health/resources/crisis",
-    icon: <svg className="w-6 h-6 text-healing-teal" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M18.364 18.364A9 9 0 005.636 5.636m12.728 12.728A9 9 0 015.636 5.636m12.728 12.728L5.636 5.636" />
-    </svg>
-  }
+  { title: 'Self-Help Tools', desc: 'Access our library of mental wellness resources, including guided meditations and stress management techniques.', href: '/mental-health/resources', icon: '📚', color: '#2563EB', bg: '#EFF6FF', border: 'rgba(37,99,235,0.15)' },
+  { title: 'Educational Materials', desc: 'Learn about mental health through our curated collection of articles, videos, and interactive modules.', href: '/mental-health/resources', icon: '🎓', color: '#0D9488', bg: '#F0FDFA', border: 'rgba(20,184,166,0.18)' },
+  { title: 'Crisis Support', desc: 'Immediate assistance and resources for students experiencing mental health emergencies — available 24/7.', href: '/mental-health/resources', icon: '🆘', color: '#EF4444', bg: '#FFF1F2', border: 'rgba(239,68,68,0.18)' },
 ];
+
+export default function MentalHealthPage() {
+  const router = useRouter();
+  const { openChat } = useChat();
+
+  return (
+    <>
+      <PageHero
+        eyebrow="Mental Health"
+        title="Student"
+        highlight="Mental Wellness"
+        subtitle="Comprehensive mental health support and resources for students, combining professional care with AI-assisted early detection — because every mind deserves attention."
+        cta={{ label: 'Schedule Consultation', href: '/book-checkup' }}
+        ctaSecondary={{ label: 'Learn More', href: '/services' }}
+        gradient="linear-gradient(160deg, #F0FDFA 0%, #EFF6FF 60%, #F0FDF4 100%)"
+      />
+
+      {/* Services */}
+      <div style={{ marginBottom: '48px' }}>
+        <div style={{ display: 'flex', alignItems: 'center', gap: '8px', fontSize: '12px', fontWeight: 600, color: '#0D9488', letterSpacing: '2px', textTransform: 'uppercase' as const, marginBottom: '14px', fontFamily: "'DM Sans', sans-serif" }}>
+          <span style={{ display: 'inline-block', width: '20px', height: '2px', background: '#14B8A6', borderRadius: '2px' }} />
+          Our Services
+        </div>
+        <h2 style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: 'clamp(24px, 3.5vw, 38px)', fontWeight: 800, letterSpacing: '-1px', color: '#0F2942', marginBottom: '28px' }}>
+          Our Mental Health Services
+        </h2>
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '16px' }}>
+          {services.map((svc) => (
+            <Link key={svc.title} href={svc.href} style={{ textDecoration: 'none' }}>
+              <div
+                className="ig-mh-card"
+                style={{
+                  padding: '26px', borderRadius: '18px',
+                  border: `1.5px solid ${svc.border}`, background: '#FFFFFF',
+                  transition: 'all 0.26s', cursor: 'pointer',
+                  boxShadow: '0 2px 10px rgba(0,0,0,0.04)', height: '100%',
+                }}
+              >
+                <div style={{ width: '44px', height: '44px', borderRadius: '12px', background: svc.bg, border: `1.5px solid ${svc.border}`, display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '20px', marginBottom: '16px' }}>{svc.icon}</div>
+                <div style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: '16px', fontWeight: 700, color: '#0F2942', marginBottom: '8px' }}>{svc.title}</div>
+                <p style={{ fontSize: '13px', color: '#3D5A73', lineHeight: 1.65, fontFamily: "'DM Sans', sans-serif", marginBottom: '14px' }}>{svc.desc}</p>
+                <ul style={{ listStyle: 'none', padding: 0, margin: 0 }}>
+                  {svc.features.map((f) => (
+                    <li key={f} style={{ display: 'flex', alignItems: 'center', gap: '7px', fontSize: '12px', color: '#3D5A73', fontFamily: "'DM Sans', sans-serif", padding: '2.5px 0' }}>
+                      <div style={{ width: '4px', height: '4px', borderRadius: '50%', background: svc.color, flexShrink: 0 }} />{f}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </Link>
+          ))}
+        </div>
+      </div>
+
+      {/* Counseling feature */}
+      <div
+        style={{
+          display: 'grid',
+          gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
+          gap: '28px',
+          marginBottom: '48px',
+          alignItems: 'center',
+          borderRadius: '20px',
+          background: 'linear-gradient(160deg, #F0FDFA 0%, #EFF6FF 100%)',
+          border: '1.5px solid rgba(20,184,166,0.15)',
+          padding: '40px',
+        }}
+      >
+        <div>
+          <h2 style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: 'clamp(22px, 3vw, 34px)', fontWeight: 800, letterSpacing: '-1px', color: '#0F2942', marginBottom: '14px' }}>
+            Professional Support When<br />
+            <span style={{ background: 'linear-gradient(90deg, #2563EB, #14B8A6)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text' }}>
+              Students Need It Most
+            </span>
+          </h2>
+          <p style={{ fontSize: '15px', color: '#3D5A73', lineHeight: 1.72, fontFamily: "'DM Sans', sans-serif", marginBottom: '22px' }}>
+            Our team of experienced counselors and mental health professionals provides compassionate support to help students navigate their emotional and psychological well-being.
+          </p>
+          {['Individual counseling sessions', 'Group therapy workshops', 'Crisis intervention support', 'Stress management techniques'].map((item) => (
+            <div key={item} style={{ display: 'flex', alignItems: 'center', gap: '10px', padding: '7px 0', fontSize: '14px', color: '#3D5A73', fontFamily: "'DM Sans', sans-serif" }}>
+              <div style={{ width: '18px', height: '18px', borderRadius: '50%', background: 'rgba(20,184,166,0.12)', border: '1px solid rgba(20,184,166,0.25)', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
+                <svg width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M2 5l2 2 4-4" stroke="#0D9488" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" /></svg>
+              </div>
+              {item}
+            </div>
+          ))}
+        </div>
+        <div style={{ borderRadius: '16px', overflow: 'hidden', position: 'relative', height: '300px', boxShadow: '0 8px 28px rgba(37,99,235,0.12)' }}>
+          <Image src="/images/services/Supportive Counseling.png" alt="Supportive counseling" fill className="object-cover" />
+        </div>
+      </div>
+
+      {/* Stats + Photo */}
+      <div
+        style={{
+          display: 'grid',
+          gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
+          gap: '28px',
+          marginBottom: '48px',
+          alignItems: 'center',
+        }}
+      >
+        <div style={{ borderRadius: '16px', overflow: 'hidden', position: 'relative', height: '280px', boxShadow: '0 8px 28px rgba(37,99,235,0.10)' }}>
+          <Image src="/images/schools/Friendly Counseling Session.png" alt="Friendly counseling" fill className="object-cover" />
+        </div>
+        <div>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '8px', fontSize: '12px', fontWeight: 600, color: '#0D9488', letterSpacing: '2px', textTransform: 'uppercase' as const, marginBottom: '14px', fontFamily: "'DM Sans', sans-serif" }}>
+            <span style={{ display: 'inline-block', width: '20px', height: '2px', background: '#14B8A6', borderRadius: '2px' }} />
+            Making a Difference
+          </div>
+          <h2 style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: 'clamp(22px, 3vw, 34px)', fontWeight: 800, letterSpacing: '-1px', color: '#0F2942', marginBottom: '14px' }}>
+            Creating a Supportive Learning Environment
+          </h2>
+          <p style={{ fontSize: '15px', color: '#3D5A73', lineHeight: 1.72, fontFamily: "'DM Sans', sans-serif", marginBottom: '22px' }}>
+            Our mental health program has helped thousands of students achieve better emotional well-being and academic success through comprehensive support and early intervention.
+          </p>
+          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '14px' }}>
+            {[{ num: '95%', label: 'Student satisfaction with counseling' }, { num: '24/7', label: 'Access to mental health resources' }].map((stat) => (
+              <div key={stat.label} style={{ padding: '20px', borderRadius: '14px', background: '#FFFFFF', border: '1.5px solid rgba(20,184,166,0.15)', boxShadow: '0 2px 10px rgba(0,0,0,0.04)' }}>
+                <div style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: '28px', fontWeight: 800, background: 'linear-gradient(135deg, #2563EB, #14B8A6)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text', marginBottom: '6px' }}>{stat.num}</div>
+                <div style={{ fontSize: '12px', color: '#7A99B4', fontFamily: "'DM Sans', sans-serif" }}>{stat.label}</div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+
+      {/* Pillars */}
+      <div style={{ marginBottom: '48px' }}>
+        <div style={{ display: 'flex', alignItems: 'center', gap: '8px', fontSize: '12px', fontWeight: 600, color: '#0D9488', letterSpacing: '2px', textTransform: 'uppercase' as const, marginBottom: '14px', fontFamily: "'DM Sans', sans-serif" }}>
+          <span style={{ display: 'inline-block', width: '20px', height: '2px', background: '#14B8A6', borderRadius: '2px' }} />
+          Holistic Approach
+        </div>
+        <h2 style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: 'clamp(22px, 3vw, 34px)', fontWeight: 800, letterSpacing: '-1px', color: '#0F2942', marginBottom: '28px' }}>
+          Pillars of Mental Wellness
+        </h2>
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '16px' }}>
+          {pillars.map((p) => (
+            <div key={p.title} style={{ padding: '24px', borderRadius: '16px', background: 'linear-gradient(135deg, #F0FDFA, #EFF6FF)', border: '1.5px solid rgba(20,184,166,0.15)', textAlign: 'center' }}>
+              <div style={{ fontSize: '28px', marginBottom: '12px' }}>{p.icon}</div>
+              <div style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: '15px', fontWeight: 700, color: '#0F2942', marginBottom: '7px' }}>{p.title}</div>
+              <div style={{ fontSize: '13px', color: '#3D5A73', lineHeight: 1.6, fontFamily: "'DM Sans', sans-serif" }}>{p.desc}</div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {/* Resources */}
+      <div style={{ marginBottom: '48px' }}>
+        <h2 style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: 'clamp(22px, 3vw, 34px)', fontWeight: 800, letterSpacing: '-1px', color: '#0F2942', marginBottom: '28px' }}>
+          Mental Health Resources
+        </h2>
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))', gap: '16px' }}>
+          {resources.map((r) => (
+            <Link key={r.title} href={r.href} style={{ textDecoration: 'none' }}>
+              <div className="ig-res-card" style={{ padding: '26px', borderRadius: '16px', border: `1.5px solid ${r.border}`, background: '#FFFFFF', transition: 'all 0.26s', boxShadow: '0 2px 10px rgba(0,0,0,0.04)' }}>
+                <div style={{ width: '44px', height: '44px', borderRadius: '12px', background: r.bg, border: `1.5px solid ${r.border}`, display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '20px', marginBottom: '16px' }}>{r.icon}</div>
+                <div style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: '16px', fontWeight: 700, color: '#0F2942', marginBottom: '8px' }}>{r.title}</div>
+                <p style={{ fontSize: '13px', color: '#3D5A73', lineHeight: 1.65, fontFamily: "'DM Sans', sans-serif", marginBottom: '14px' }}>{r.desc}</p>
+                <span style={{ fontSize: '13px', fontWeight: 600, color: r.color, fontFamily: "'DM Sans', sans-serif" }}>Learn More →</span>
+              </div>
+            </Link>
+          ))}
+        </div>
+      </div>
+
+      {/* Emergency CTA */}
+      <div
+        style={{
+          borderRadius: '20px',
+          background: 'linear-gradient(135deg, #EF4444 0%, #D97706 100%)',
+          padding: '40px',
+          textAlign: 'center',
+          position: 'relative',
+          overflow: 'hidden',
+        }}
+      >
+        <div style={{ position: 'absolute', top: '-40px', right: '-40px', width: '160px', height: '160px', borderRadius: '50%', background: 'rgba(255,255,255,0.07)', pointerEvents: 'none' }} />
+        <div style={{ display: 'inline-flex', alignItems: 'center', gap: '6px', padding: '4px 12px', borderRadius: '100px', border: '1px solid rgba(255,255,255,0.35)', background: 'rgba(255,255,255,0.12)', fontSize: '11px', fontWeight: 700, color: '#fff', letterSpacing: '1px', marginBottom: '14px', fontFamily: "'Space Grotesk', sans-serif" }}>
+          🚨 IMMEDIATE SUPPORT
+        </div>
+        <h3 style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: 'clamp(20px, 3vw, 30px)', fontWeight: 800, color: '#fff', marginBottom: '10px', position: 'relative' }}>
+          Need Immediate Support?
+        </h3>
+        <p style={{ fontSize: '15px', color: 'rgba(255,255,255,0.88)', marginBottom: '24px', fontFamily: "'DM Sans', sans-serif", position: 'relative' }}>
+          Our mental health professionals are available 24/7 to provide immediate assistance.
+        </p>
+        <div style={{ display: 'flex', gap: '12px', justifyContent: 'center', flexWrap: 'wrap', position: 'relative' }}>
+          <a href="tel:+917050140340" style={{ padding: '12px 24px', borderRadius: '10px', fontSize: '15px', fontWeight: 700, color: '#EF4444', textDecoration: 'none', background: '#FFFFFF', boxShadow: '0 4px 16px rgba(0,0,0,0.15)', fontFamily: "'DM Sans', sans-serif" }}>
+            📞 Call Helpline
+          </a>
+          <button onClick={openChat} style={{ padding: '12px 24px', borderRadius: '10px', fontSize: '15px', fontWeight: 600, color: '#fff', cursor: 'pointer', border: '2px solid rgba(255,255,255,0.45)', background: 'rgba(255,255,255,0.12)', fontFamily: "'DM Sans', sans-serif" }}>
+            💬 Chat with Counselor
+          </button>
+        </div>
+      </div>
+
+      <style jsx>{`
+        .ig-mh-card:hover { transform: translateY(-4px); box-shadow: 0 12px 32px rgba(37,99,235,0.10) !important; }
+        .ig-res-card:hover { transform: translateY(-3px); box-shadow: 0 10px 28px rgba(37,99,235,0.09) !important; }
+      `}</style>
+    </>
+  );
+}

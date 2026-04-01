@@ -41,6 +41,15 @@ const config: Config = {
         'healing-teal': '#00B4D3',
         'clinic-white': '#FFFFFF',
         'soft-charcoal': '#1E2959',
+        // ── Healthcare AI Design Tokens ──
+        'ig-primary':   '#2563EB',   // trust / medical authority
+        'ig-teal':      '#14B8A6',   // health / freshness
+        'ig-sky':       '#38BDF8',   // sky blue glow
+        'ig-success':   '#22C55E',   // wellness / positive
+        'ig-warning':   '#F59E0B',   // alert amber
+        'ig-danger':    '#EF4444',   // critical red
+        'ig-bg':        '#060A0F',   // main background
+        'ig-bg2':       '#0B1220',   // secondary background
         base: {
           900: 'rgb(var(--base-900))',
           800: 'rgb(var(--base-800))',

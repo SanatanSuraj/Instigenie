@@ -1,232 +1,49 @@
 'use client';
-
-import { motion } from 'framer-motion';
+import { useRouter } from 'next/navigation';
 import Image from 'next/image';
+import PageHero from '../../components/PageHero';
+
+const items = [
+  ['🚑 On-site First Aid', 'Trained nurses and first-aid equipment stationed at every school.'],
+  ['📞 Emergency Hotline', '24/7 direct line to InstiGenie emergency medical coordinators.'],
+  ['🏥 Hospital Liaison', 'Pre-arranged emergency pathways to nearest empaneled hospitals.'],
+  ['📋 Emergency Protocols', 'School-specific emergency action plans for all common scenarios.'],
+  ['🚒 Rapid Response', 'Target response time under 8 minutes for all medical emergencies.'],
+  ['📊 Incident Reporting', 'Digital incident logging with root-cause analysis and prevention plans.'],
+];
 
 export default function EmergencyResponsePage() {
+  const router = useRouter();
   return (
     <>
-      {/* Hero Section */}
-      <section className="relative bg-gradient-to-br from-trust-navy to-healing-teal/90 text-clinic-white py-24 overflow-hidden">
-        <div className="absolute inset-0 bg-grid-pattern opacity-10"></div>
-        <div className="max-w-7xl mx-auto px-6 relative">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            <div>
-              <h1 className="text-4xl md:text-5xl font-bold mb-8 animate-fadeUp">
-                Emergency Response Training
-              </h1>
-              <p className="text-clinic-white/90 text-xl leading-relaxed mb-12 animate-fadeUp" style={{ animationDelay: '0.1s' }}>
-                Comprehensive training in emergency medical procedures and first aid for school staff and students.
-              </p>
-            </div>
-            <div className="relative h-[400px] rounded-xl overflow-hidden">
-              <Image
-                src="/images/schools/First Aid Demonstration.png"
-                alt="Emergency Response Training"
-                fill
-                className="object-cover"
-                sizes="(max-width: 768px) 100vw, 50vw"
-              />
-            </div>
+      <PageHero eyebrow="Service" title="Emergency" highlight="Response Service" subtitle="Rapid, coordinated emergency medical response ensuring every student receives immediate care when seconds count." cta={{ label: 'Set Up Emergency Plan', href: '/book-checkup' }} ctaSecondary={{ label: 'All Services', href: '/services' }} gradient="linear-gradient(160deg, #FFF1F2 0%, #EFF6FF 60%, #F0FDFA 100%)" />
+
+      {/* Original image */}
+      <div style={{ borderRadius: '20px', overflow: 'hidden', border: '1.5px solid rgba(239,68,68,0.15)', boxShadow: '0 4px 24px rgba(239,68,68,0.08)', marginBottom: '24px', position: 'relative', height: '360px' }}>
+        <Image src="/images/schools/First Aid Demonstration.png" alt="First Aid Demonstration" fill style={{ objectFit: 'cover' }} />
+      </div>
+
+      <div style={{ padding: '18px 22px', borderRadius: '14px', background: 'rgba(239,68,68,0.06)', border: '1.5px solid rgba(239,68,68,0.22)', marginBottom: '28px', display: 'flex', alignItems: 'center', gap: '12px' }}>
+        <span style={{ fontSize: '20px' }}>🚨</span>
+        <div>
+          <div style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: '14px', fontWeight: 700, color: '#EF4444' }}>Emergency? Call Now</div>
+          <a href="tel:+917050140340" style={{ fontSize: '16px', fontWeight: 800, color: '#EF4444', fontFamily: 'monospace' }}>+91 70501 40340</a>
+        </div>
+      </div>
+
+      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))', gap: '14px', marginBottom: '48px' }}>
+        {items.map(([title, desc]) => (
+          <div key={title} style={{ padding: '22px', borderRadius: '16px', background: '#FFFFFF', border: '1.5px solid rgba(239,68,68,0.12)', boxShadow: '0 2px 8px rgba(0,0,0,0.04)' }}>
+            <div style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: '14px', fontWeight: 700, color: '#0F2942', marginBottom: '6px' }}>{title}</div>
+            <p style={{ fontSize: '13px', color: '#3D5A73', lineHeight: 1.6, fontFamily: "'DM Sans', sans-serif", margin: 0 }}>{desc}</p>
           </div>
-        </div>
-      </section>
-
-      {/* Training Programs Section */}
-      <section className="py-24 bg-gradient-to-b from-clinic-white to-healing-teal/5 dark:from-soft-charcoal dark:to-healing-teal/10">
-        <div className="max-w-7xl mx-auto px-6">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="text-center mb-20"
-          >
-            <h2 className="text-3xl md:text-4xl font-bold mb-6">Training Programs</h2>
-            <p className="text-soft-charcoal/80 dark:text-clinic-white/80 max-w-2xl mx-auto text-lg">
-              Comprehensive emergency response training programs designed for school environments
-            </p>
-          </motion.div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {programs.map((program, index) => (
-              <motion.div
-                key={program.title}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: index * 0.1 }}
-                className="bg-clinic-white dark:bg-soft-charcoal p-6 rounded-xl shadow-lg"
-              >
-                <div className="text-healing-teal mb-4">{program.icon}</div>
-                <h3 className="text-xl font-semibold mb-3">{program.title}</h3>
-                <p className="text-soft-charcoal/80 dark:text-clinic-white/80">
-                  {program.description}
-                </p>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Features Section */}
-      <section className="py-24 bg-healing-teal/5 dark:bg-healing-teal/10">
-        <div className="max-w-7xl mx-auto px-6">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="text-center mb-20"
-          >
-            <h2 className="text-3xl md:text-4xl font-bold mb-6">Program Features</h2>
-            <p className="text-soft-charcoal/80 dark:text-clinic-white/80 max-w-2xl mx-auto text-lg">
-              Key components that make our emergency response training effective
-            </p>
-          </motion.div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            {features.map((feature, index) => (
-              <motion.div
-                key={feature.title}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: index * 0.1 }}
-                className="flex gap-4"
-              >
-                <div className="text-healing-teal">
-                  <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                  </svg>
-                </div>
-                <div>
-                  <h3 className="text-xl font-semibold mb-2">{feature.title}</h3>
-                  <p className="text-soft-charcoal/80 dark:text-clinic-white/80">{feature.description}</p>
-                </div>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Certification Section */}
-      <section className="py-24 bg-gradient-to-br from-clinic-white via-healing-teal/5 to-clinic-white dark:from-soft-charcoal dark:via-healing-teal/10 dark:to-soft-charcoal">
-        <div className="max-w-7xl mx-auto px-6">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="text-center mb-20"
-          >
-            <h2 className="text-3xl md:text-4xl font-bold mb-6">Certification Process</h2>
-            <p className="text-soft-charcoal/80 dark:text-clinic-white/80 max-w-2xl mx-auto text-lg">
-              Upon completion of training, participants receive recognized certifications
-            </p>
-          </motion.div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {certificationSteps.map((step, index) => (
-              <motion.div
-                key={step.title}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: index * 0.1 }}
-                className="bg-clinic-white dark:bg-soft-charcoal p-6 rounded-xl shadow-lg"
-              >
-                <div className="text-4xl font-bold text-healing-teal mb-4">{index + 1}</div>
-                <h3 className="text-xl font-semibold mb-3">{step.title}</h3>
-                <p className="text-soft-charcoal/80 dark:text-clinic-white/80">{step.description}</p>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* CTA Section */}
-      <section className="py-24 bg-gradient-to-br from-clinic-white via-healing-teal/5 to-clinic-white dark:from-soft-charcoal dark:via-healing-teal/10 dark:to-soft-charcoal">
-        <div className="max-w-7xl mx-auto px-6 text-center">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="max-w-3xl mx-auto"
-          >
-            <h2 className="text-3xl md:text-4xl font-bold mb-8">Prepare Your School</h2>
-            <p className="text-soft-charcoal/80 dark:text-clinic-white/80 text-xl mb-12">
-              Ensure your staff and students are prepared for any medical emergency.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-6 justify-center">
-              <button className="btn-primary px-8 py-4 text-lg">Schedule Training</button>
-              <button className="btn-secondary px-8 py-4 text-lg">Download Guide</button>
-            </div>
-          </motion.div>
-        </div>
-      </section>
+        ))}
+      </div>
+      <div style={{ borderRadius: '20px', background: 'linear-gradient(135deg, #EF4444 0%, #D97706 100%)', padding: '44px', textAlign: 'center' }}>
+        <h2 style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: 'clamp(20px, 3vw, 32px)', fontWeight: 800, color: '#fff', marginBottom: '10px' }}>Set Up Your School&apos;s Emergency Plan</h2>
+        <p style={{ fontSize: '15px', color: 'rgba(255,255,255,0.88)', marginBottom: '24px', fontFamily: "'DM Sans', sans-serif" }}>Don&apos;t wait for an emergency to be prepared.</p>
+        <button onClick={() => router.push('/book-checkup')} style={{ padding: '13px 28px', borderRadius: '10px', fontSize: '15px', fontWeight: 700, color: '#EF4444', cursor: 'pointer', border: 'none', background: '#FFFFFF', fontFamily: "'DM Sans', sans-serif" }}>Get Emergency Ready →</button>
+      </div>
     </>
   );
 }
-
-const programs = [
-  {
-    title: "CPR Certification",
-    description: "Professional training in cardiopulmonary resuscitation techniques.",
-    icon: <svg className="w-12 h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
-    </svg>
-  },
-  {
-    title: "First Aid Training",
-    description: "Comprehensive first aid response training for common emergencies.",
-    icon: <svg className="w-12 h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 9v3m0 0v3m0-3h3m-3 0H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z" />
-    </svg>
-  },
-  {
-    title: "Emergency Protocols",
-    description: "Training in school-specific emergency response procedures.",
-    icon: <svg className="w-12 h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
-    </svg>
-  },
-  {
-    title: "Safety Drills",
-    description: "Regular practice sessions for emergency response scenarios.",
-    icon: <svg className="w-12 h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
-    </svg>
-  }
-];
-
-const features = [
-  {
-    title: "Hands-on Training",
-    description: "Practical experience with emergency equipment and procedures."
-  },
-  {
-    title: "Expert Instructors",
-    description: "Training conducted by certified emergency response professionals."
-  },
-  {
-    title: "Regular Updates",
-    description: "Periodic refresher courses and updates on latest protocols."
-  },
-  {
-    title: "Custom Scenarios",
-    description: "Training adapted to school-specific emergency situations."
-  }
-];
-
-const certificationSteps = [
-  {
-    title: "Theory Training",
-    description: "Comprehensive classroom instruction on emergency response principles."
-  },
-  {
-    title: "Practical Assessment",
-    description: "Hands-on evaluation of emergency response skills and techniques."
-  },
-  {
-    title: "Certification Award",
-    description: "Official certification upon successful completion of training."
-  }
-];

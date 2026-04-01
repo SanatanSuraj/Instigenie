@@ -1,109 +1,55 @@
 'use client';
-
-import { motion } from 'framer-motion';
-import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 import Image from 'next/image';
+import PageHero from '../components/PageHero';
 
-export default function DentalCare() {
+const services = [
+  { icon: '🦷', title: 'Dental Examination', desc: 'Complete oral health assessment including bite, gum, and jaw evaluation.' },
+  { icon: '🪥', title: 'Oral Hygiene Assessment', desc: 'Personalized guidance on brushing, flossing, and dietary habits.' },
+  { icon: '🔬', title: 'Cavity Detection', desc: 'Early identification of cavities using modern diagnostic tools.' },
+  { icon: '🦠', title: 'Gum Disease Screening', desc: 'Checks for gingivitis and early signs of periodontal disease.' },
+  { icon: '📸', title: 'Dental X-rays', desc: 'Digital X-rays for detecting issues invisible to the naked eye.' },
+  { icon: '📋', title: 'Treatment Planning', desc: 'Clear, parent-friendly reports with recommended next steps.' },
+];
+
+export default function DentalCarePage() {
+  const router = useRouter();
   return (
-    <div className="min-h-screen bg-base-50 dark:bg-base-900">
-      {/* Hero Section */}
-      <section className="relative py-20 bg-trust-navy text-clinic-white">
-        <div className="absolute inset-0 bg-gradient-to-br from-trust-navy/95 via-trust-navy/90 to-healing-teal/80" />
-        <div className="max-w-7xl mx-auto px-6 relative z-10">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-          >
-            <h1 className="text-5xl md:text-6xl font-bold mb-6">
-              School Dental Care Services
-            </h1>
-            <p className="text-xl text-base-100/90 max-w-2xl">
-              Providing comprehensive dental care and education to promote lifelong oral health habits among students.
-            </p>
-          </motion.div>
-        </div>
-      </section>
+    <>
+      <PageHero eyebrow="Dental Care" title="School Dental" highlight="Health Program" subtitle="Comprehensive dental screenings and oral health education to ensure every student has a healthy, confident smile. Early intervention prevents bigger problems." cta={{ label: 'Book Dental Exam', href: '/book-checkup' }} ctaSecondary={{ label: 'View All Services', href: '/services' }} gradient="linear-gradient(160deg, #ECFDF5 0%, #EFF6FF 60%, #F0FDFA 100%)" />
 
-      {/* Main Content */}
-      <section className="py-16">
-        <div className="max-w-7xl mx-auto px-6">
-          <div className="grid md:grid-cols-2 gap-12">
-            <div className="space-y-6">
-              <h2 className="text-3xl font-bold text-trust-navy dark:text-clinic-white">
-                Our Dental Services
-              </h2>
-              <div className="space-y-8">
-                <div>
-                  <h3 className="text-xl font-semibold mb-3 text-healing-teal">Preventive Care</h3>
-                  <ul className="space-y-3">
-                    <li className="flex items-start gap-3">
-                      <svg className="w-6 h-6 text-healing-teal mt-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                      </svg>
-                      <span>Regular dental check-ups</span>
-                    </li>
-                    <li className="flex items-start gap-3">
-                      <svg className="w-6 h-6 text-healing-teal mt-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                      </svg>
-                      <span>Professional cleaning</span>
-                    </li>
-                    <li className="flex items-start gap-3">
-                      <svg className="w-6 h-6 text-healing-teal mt-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                      </svg>
-                      <span>Fluoride treatments</span>
-                    </li>
-                  </ul>
-                </div>
-                <div>
-                  <h3 className="text-xl font-semibold mb-3 text-healing-teal">Educational Programs</h3>
-                  <ul className="space-y-3">
-                    <li className="flex items-start gap-3">
-                      <svg className="w-6 h-6 text-healing-teal mt-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                      </svg>
-                      <span>Proper brushing techniques</span>
-                    </li>
-                    <li className="flex items-start gap-3">
-                      <svg className="w-6 h-6 text-healing-teal mt-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                      </svg>
-                      <span>Nutrition and oral health</span>
-                    </li>
-                    <li className="flex items-start gap-3">
-                      <svg className="w-6 h-6 text-healing-teal mt-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                      </svg>
-                      <span>Cavity prevention strategies</span>
-                    </li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-            <div>
-              <Image
-                src="/images/services/Modern Dental Consultation.png"
-                alt="Dental Care Services"
-                width={600}
-                height={400}
-                className="rounded-xl shadow-lg"
-              />
-            </div>
-          </div>
+      {/* Original image */}
+      <div style={{ borderRadius: '20px', overflow: 'hidden', border: '1.5px solid rgba(13,148,136,0.15)', boxShadow: '0 4px 24px rgba(13,148,136,0.10)', marginBottom: '48px', position: 'relative', height: '360px' }}>
+        <Image src="/images/services/Modern Dental Consultation.png" alt="Modern Dental Consultation" fill style={{ objectFit: 'cover' }} />
+      </div>
 
-          <div className="mt-16 text-center">
-            <Link
-              href="/contact?subject=dental-care"
-              className="inline-block px-8 py-4 text-lg rounded-xl bg-healing-teal hover:bg-healing-teal/90 text-clinic-white shadow-lg hover:shadow-xl transition-all"
-            >
-              Schedule a Dental Check-up
-            </Link>
+      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(140px, 1fr))', gap: '14px', marginBottom: '48px' }}>
+        {[{ num: '97%', l: 'Early Detection Rate', c: '#0D9488' }, { num: '30 min', l: 'Per Student', c: '#2563EB' }, { num: '100k+', l: 'Students Screened', c: '#22C55E' }, { num: '0 pain', l: 'Non-invasive Process', c: '#7C3AED' }].map(b => (
+          <div key={b.l} style={{ padding: '20px', borderRadius: '14px', background: '#FFFFFF', border: '1.5px solid rgba(37,99,235,0.10)', textAlign: 'center', boxShadow: '0 2px 10px rgba(0,0,0,0.04)' }}>
+            <div style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: '26px', fontWeight: 800, color: b.c, marginBottom: '4px' }}>{b.num}</div>
+            <div style={{ fontSize: '12px', color: '#7A99B4', fontFamily: "'DM Sans', sans-serif" }}>{b.l}</div>
           </div>
+        ))}
+      </div>
+
+      <div style={{ marginBottom: '48px' }}>
+        <h2 style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: 'clamp(22px, 3vw, 34px)', fontWeight: 800, color: '#0F2942', marginBottom: '24px', letterSpacing: '-0.5px' }}>What&apos;s Included</h2>
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))', gap: '14px' }}>
+          {services.map(s => (
+            <div key={s.title} style={{ padding: '22px', borderRadius: '16px', background: '#FFFFFF', border: '1.5px solid rgba(13,148,136,0.12)', boxShadow: '0 2px 8px rgba(0,0,0,0.04)' }}>
+              <div style={{ fontSize: '24px', marginBottom: '10px' }}>{s.icon}</div>
+              <div style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: '14px', fontWeight: 700, color: '#0F2942', marginBottom: '6px' }}>{s.title}</div>
+              <p style={{ fontSize: '13px', color: '#3D5A73', lineHeight: 1.6, fontFamily: "'DM Sans', sans-serif", margin: 0 }}>{s.desc}</p>
+            </div>
+          ))}
         </div>
-      </section>
-    </div>
+      </div>
+
+      <div style={{ borderRadius: '20px', background: 'linear-gradient(135deg, #0D9488 0%, #22C55E 100%)', padding: '44px', textAlign: 'center' }}>
+        <h2 style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: 'clamp(20px, 3vw, 32px)', fontWeight: 800, color: '#fff', marginBottom: '10px' }}>Give Students a Healthy Smile</h2>
+        <p style={{ fontSize: '15px', color: 'rgba(255,255,255,0.88)', marginBottom: '24px', fontFamily: "'DM Sans', sans-serif" }}>Book a dental health program for your school today.</p>
+        <button onClick={() => router.push('/book-checkup')} style={{ padding: '13px 28px', borderRadius: '10px', fontSize: '15px', fontWeight: 700, color: '#0D9488', cursor: 'pointer', border: 'none', background: '#FFFFFF', fontFamily: "'DM Sans', sans-serif" }}>Book Dental Screening →</button>
+      </div>
+    </>
   );
 }

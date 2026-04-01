@@ -1,13 +1,22 @@
 import './globals.css';
 import MetadataScript from '@/app/components/Metadata';
-import Navigation from '@/app/components/Navigation';
-import Footer from '@/app/components/Footer';
-import FloatingChatButton from '@/app/components/FloatingChatButton';
+import LayoutShell from '@/app/components/LayoutShell';
 import { ThemeProvider } from 'next-themes';
 import { ChatProvider } from './context/ChatContext';
-import { Playfair_Display, Lora, Inter } from 'next/font/google';
-import ResponsiveContainer from './components/layout/ResponsiveContainer';
+import { Space_Grotesk, DM_Sans, Playfair_Display, Lora, Inter } from 'next/font/google';
 import { SpeedInsights } from '@vercel/speed-insights/next';
+
+const spaceGrotesk = Space_Grotesk({
+  subsets: ['latin'],
+  display: 'swap',
+  variable: '--font-space-grotesk',
+});
+
+const dmSans = DM_Sans({
+  subsets: ['latin'],
+  display: 'swap',
+  variable: '--font-dm-sans',
+});
 
 const playfair = Playfair_Display({
   subsets: ['latin'],
@@ -35,7 +44,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${playfair.variable} ${lora.variable} ${inter.variable}`}
+      className={`${spaceGrotesk.variable} ${dmSans.variable} ${playfair.variable} ${lora.variable} ${inter.variable}`}
       suppressHydrationWarning
     >
       <head>
@@ -45,16 +54,7 @@ export default function RootLayout({
       <body className="min-h-screen bg-clinic-white dark:bg-soft-charcoal">
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
           <ChatProvider>
-            <div className="flex flex-col min-h-screen">
-              <Navigation />
-              <ResponsiveContainer maxWidth="2xl" className="flex-grow">
-                <main className="w-full py-4 sm:py-6 md:py-8 lg:py-12">
-                  {children}
-                </main>
-              </ResponsiveContainer>
-              <Footer />
-              <FloatingChatButton />
-            </div>
+            <LayoutShell>{children}</LayoutShell>
           </ChatProvider>
         </ThemeProvider>
         <SpeedInsights />

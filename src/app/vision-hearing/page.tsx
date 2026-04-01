@@ -1,110 +1,60 @@
 'use client';
-
-import { motion } from 'framer-motion';
-import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 import Image from 'next/image';
+import PageHero from '../components/PageHero';
 
-export default function VisionHearing() {
+const tests = [
+  { icon: '👁️', title: 'Visual Acuity Test', desc: 'Measures how clearly each eye can see at various distances using standardized charts.' },
+  { icon: '🎨', title: 'Color Vision Test', desc: 'Identifies color blindness or deficiencies using Ishihara plates.' },
+  { icon: '👂', title: 'Pure Tone Audiometry', desc: 'Tests hearing threshold across frequencies in a soundproof environment.' },
+  { icon: '🔊', title: 'Speech Audiometry', desc: 'Evaluates ability to hear and understand spoken words at various volumes.' },
+  { icon: '🔭', title: 'Peripheral Vision', desc: 'Examines the full width of a student\'s visual field.' },
+  { icon: '📊', title: 'Digital Report', desc: 'Detailed digital report with referral recommendations sent immediately.' },
+];
+
+const stats = [
+  { num: '98%', label: 'Detection Rate', color: '#2563EB' },
+  { num: '10 min', label: 'Per Student', color: '#0D9488' },
+  { num: '200k+', label: 'Screenings Done', color: '#22C55E' },
+  { num: '45 dB', label: 'Hearing Sensitivity', color: '#7C3AED' },
+];
+
+export default function VisionHearingPage() {
+  const router = useRouter();
   return (
-    <div className="min-h-screen bg-base-50 dark:bg-base-900">
-      {/* Hero Section */}
-      <section className="relative py-20 bg-trust-navy text-clinic-white">
-        <div className="absolute inset-0 bg-gradient-to-br from-trust-navy/95 via-trust-navy/90 to-healing-teal/80" />
-        <div className="max-w-7xl mx-auto px-6 relative z-10">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-          >
-            <h1 className="text-5xl md:text-6xl font-bold mb-6">
-              Vision & Hearing Screening
-            </h1>
-            <p className="text-xl text-base-100/90 max-w-2xl">
-              Advanced AI-powered screenings to detect vision and hearing impairments early,
-              ensuring optimal learning conditions for every student.
-            </p>
-          </motion.div>
-        </div>
-      </section>
+    <>
+      <PageHero eyebrow="Vision & Hearing" title="Vision & Hearing" highlight="Screening Program" subtitle="Early detection of vision and hearing problems is crucial for student learning. Our comprehensive screenings identify issues before they impact academic performance." cta={{ label: 'Book Screening', href: '/book-checkup' }} ctaSecondary={{ label: 'Learn More', href: '/services' }} />
 
-      {/* Main Content */}
-      <section className="py-16">
-        <div className="max-w-7xl mx-auto px-6">
-          <div className="grid md:grid-cols-2 gap-12">
-            <div className="space-y-6">
-              <h2 className="text-3xl font-bold text-trust-navy dark:text-clinic-white">
-                Our Screening Services
-              </h2>
-              <div className="space-y-8">
-                <div>
-                  <h3 className="text-xl font-semibold mb-3 text-healing-teal">Vision Screening</h3>
-                  <ul className="space-y-3">
-                    <li className="flex items-start gap-3">
-                      <svg className="w-6 h-6 text-healing-teal mt-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                      </svg>
-                      <span>Visual acuity testing</span>
-                    </li>
-                    <li className="flex items-start gap-3">
-                      <svg className="w-6 h-6 text-healing-teal mt-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                      </svg>
-                      <span>Color vision assessment</span>
-                    </li>
-                    <li className="flex items-start gap-3">
-                      <svg className="w-6 h-6 text-healing-teal mt-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                      </svg>
-                      <span>Eye muscle balance tests</span>
-                    </li>
-                  </ul>
-                </div>
-                <div>
-                  <h3 className="text-xl font-semibold mb-3 text-healing-teal">Hearing Screening</h3>
-                  <ul className="space-y-3">
-                    <li className="flex items-start gap-3">
-                      <svg className="w-6 h-6 text-healing-teal mt-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                      </svg>
-                      <span>Pure-tone audiometry</span>
-                    </li>
-                    <li className="flex items-start gap-3">
-                      <svg className="w-6 h-6 text-healing-teal mt-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                      </svg>
-                      <span>Speech recognition testing</span>
-                    </li>
-                    <li className="flex items-start gap-3">
-                      <svg className="w-6 h-6 text-healing-teal mt-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                      </svg>
-                      <span>Tympanometry (middle ear function)</span>
-                    </li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-            <div>
-              <Image
-                src="/images/services/health screening.png"
-                alt="Vision and Hearing Screening"
-                width={600}
-                height={400}
-                className="rounded-xl shadow-lg"
-              />
-            </div>
-          </div>
+      {/* Original image */}
+      <div style={{ borderRadius: '20px', overflow: 'hidden', border: '1.5px solid rgba(37,99,235,0.10)', boxShadow: '0 4px 24px rgba(37,99,235,0.08)', marginBottom: '48px', position: 'relative', height: '360px' }}>
+        <Image src="/images/services/health screening.png" alt="Vision and Hearing Screening" fill style={{ objectFit: 'cover' }} />
+      </div>
 
-          <div className="mt-16 text-center">
-            <Link
-              href="/contact?subject=vision-hearing"
-              className="inline-block px-8 py-4 text-lg rounded-xl bg-healing-teal hover:bg-healing-teal/90 text-clinic-white shadow-lg hover:shadow-xl transition-all"
-            >
-              Schedule a Screening
-            </Link>
+      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(140px, 1fr))', gap: '14px', marginBottom: '48px' }}>
+        {stats.map(b => (
+          <div key={b.label} style={{ padding: '20px', borderRadius: '14px', background: '#FFFFFF', border: '1.5px solid rgba(37,99,235,0.10)', textAlign: 'center', boxShadow: '0 2px 10px rgba(0,0,0,0.04)' }}>
+            <div style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: '26px', fontWeight: 800, color: b.color, marginBottom: '4px' }}>{b.num}</div>
+            <div style={{ fontSize: '12px', color: '#7A99B4', fontFamily: "'DM Sans', sans-serif" }}>{b.label}</div>
           </div>
+        ))}
+      </div>
+      <div style={{ marginBottom: '48px' }}>
+        <h2 style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: 'clamp(22px, 3vw, 34px)', fontWeight: 800, color: '#0F2942', marginBottom: '24px', letterSpacing: '-0.5px' }}>Comprehensive Screening Battery</h2>
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))', gap: '14px' }}>
+          {tests.map(s => (
+            <div key={s.title} style={{ padding: '22px', borderRadius: '16px', background: '#FFFFFF', border: '1.5px solid rgba(37,99,235,0.09)', boxShadow: '0 2px 8px rgba(0,0,0,0.04)' }}>
+              <div style={{ fontSize: '24px', marginBottom: '10px' }}>{s.icon}</div>
+              <div style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: '14px', fontWeight: 700, color: '#0F2942', marginBottom: '6px' }}>{s.title}</div>
+              <p style={{ fontSize: '13px', color: '#3D5A73', lineHeight: 1.6, fontFamily: "'DM Sans', sans-serif", margin: 0 }}>{s.desc}</p>
+            </div>
+          ))}
         </div>
-      </section>
-    </div>
+      </div>
+      <div style={{ borderRadius: '20px', background: 'linear-gradient(135deg, #0D9488 0%, #2563EB 100%)', padding: '44px', textAlign: 'center' }}>
+        <h2 style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: 'clamp(20px, 3vw, 32px)', fontWeight: 800, color: '#fff', marginBottom: '10px' }}>Book Vision & Hearing Screening</h2>
+        <p style={{ fontSize: '15px', color: 'rgba(255,255,255,0.88)', marginBottom: '24px', fontFamily: "'DM Sans', sans-serif" }}>Early detection makes all the difference. Book today.</p>
+        <button onClick={() => router.push('/book-checkup')} style={{ padding: '13px 28px', borderRadius: '10px', fontSize: '15px', fontWeight: 700, color: '#0D9488', cursor: 'pointer', border: 'none', background: '#FFFFFF', fontFamily: "'DM Sans', sans-serif" }}>Book Now →</button>
+      </div>
+    </>
   );
 }

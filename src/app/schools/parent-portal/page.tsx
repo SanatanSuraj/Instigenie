@@ -26,7 +26,7 @@ export default function ParentPortalPage() {
       </div>
       <div style={{ borderRadius: '20px', background: 'linear-gradient(135deg, #16A34A 0%, #0D9488 100%)', padding: '44px', textAlign: 'center' }}>
         <h2 style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: 'clamp(20px, 3vw, 32px)', fontWeight: 800, color: '#fff', marginBottom: '10px' }}>Enable the Parent Portal</h2>
-        <p style={{ fontSize: '15px', color: 'rgba(255,255,255,0.88)', marginBottom: '24px', fontFamily: "'DM Sans', sans-serif" }}>Keep parents connected to their child's health in real time.</p>
+        <p style={{ fontSize: '15px', color: 'rgba(255,255,255,0.88)', marginBottom: '24px', fontFamily: "'DM Sans', sans-serif" }}>Keep parents connected to their child&apos;s health in real time.</p>
         <button onClick={() => router.push('/book-checkup')} style={{ padding: '13px 28px', borderRadius: '10px', fontSize: '15px', fontWeight: 700, color: '#16A34A', cursor: 'pointer', border: 'none', background: '#FFFFFF', fontFamily: "'DM Sans', sans-serif" }}>Set Up Now →</button>
       </div>
     </>

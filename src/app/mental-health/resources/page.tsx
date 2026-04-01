@@ -59,7 +59,7 @@ export default function MentalHealthResourcesPage() {
 
       <div style={{ borderRadius: '20px', background: 'linear-gradient(135deg, #2563EB 0%, #14B8A6 100%)', padding: '44px', textAlign: 'center' }}>
         <h2 style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: 'clamp(20px, 3vw, 32px)', fontWeight: 800, color: '#fff', marginBottom: '10px' }}>Still Need Help?</h2>
-        <p style={{ fontSize: '15px', color: 'rgba(255,255,255,0.88)', marginBottom: '24px', fontFamily: "'DM Sans', sans-serif" }}>Our mental health professionals are here for you. Don't hesitate to reach out.</p>
+        <p style={{ fontSize: '15px', color: 'rgba(255,255,255,0.88)', marginBottom: '24px', fontFamily: "'DM Sans', sans-serif" }}>Our mental health professionals are here for you. Don&apos;t hesitate to reach out.</p>
         <div style={{ display: 'flex', gap: '12px', justifyContent: 'center', flexWrap: 'wrap' }}>
           <button onClick={() => router.push('/book-checkup')} style={{ padding: '13px 24px', borderRadius: '10px', fontSize: '14px', fontWeight: 700, color: '#2563EB', cursor: 'pointer', border: 'none', background: '#FFFFFF', fontFamily: "'DM Sans', sans-serif" }}>Book a Consultation</button>
           <button onClick={() => router.push('/chat')} style={{ padding: '13px 20px', borderRadius: '10px', fontSize: '14px', fontWeight: 600, color: '#fff', cursor: 'pointer', border: '2px solid rgba(255,255,255,0.40)', background: 'rgba(255,255,255,0.12)', fontFamily: "'DM Sans', sans-serif" }}>💬 Chat with AIRA</button>

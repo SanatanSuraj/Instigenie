@@ -108,7 +108,7 @@ export default function ChatWidget() {
                         : '#FFFFFF',
                       color: msg.type === 'user' ? '#FFFFFF' : '#0F2942',
                       boxShadow: msg.type === 'user' ? '0 2px 10px rgba(37,99,235,0.25)' : '0 1px 6px rgba(0,0,0,0.06)',
-                      border: msg.type === 'ai' ? '1px solid rgba(37,99,235,0.10)' : 'none',
+                      border: msg.type === 'bot' ? '1px solid rgba(37,99,235,0.10)' : 'none',
                     }}
                   >
                     {msg.content}

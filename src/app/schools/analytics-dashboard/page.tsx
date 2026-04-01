@@ -26,7 +26,7 @@ export default function AnalyticsDashboardPage() {
         ))}
       </div>
       <div style={{ borderRadius: '20px', background: 'linear-gradient(135deg, #0284C7 0%, #7C3AED 100%)', padding: '44px', textAlign: 'center' }}>
-        <h2 style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: 'clamp(20px, 3vw, 32px)', fontWeight: 800, color: '#fff', marginBottom: '10px' }}>See Your School's Health Data</h2>
+        <h2 style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: 'clamp(20px, 3vw, 32px)', fontWeight: 800, color: '#fff', marginBottom: '10px' }}>See Your School&apos;s Health Data</h2>
         <p style={{ fontSize: '15px', color: 'rgba(255,255,255,0.88)', marginBottom: '24px', fontFamily: "'DM Sans', sans-serif" }}>Request a personalized analytics dashboard demo today.</p>
         <button onClick={() => router.push('/book-checkup')} style={{ padding: '13px 28px', borderRadius: '10px', fontSize: '15px', fontWeight: 700, color: '#0284C7', cursor: 'pointer', border: 'none', background: '#FFFFFF', fontFamily: "'DM Sans', sans-serif" }}>Request Demo →</button>
       </div>

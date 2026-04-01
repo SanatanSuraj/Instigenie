@@ -2,7 +2,6 @@
 
 import Image from 'next/image';
 import Link from 'next/link';
-import { useRouter } from 'next/navigation';
 import { useChat } from '../context/ChatContext';
 import PageHero from '../components/PageHero';
 
@@ -55,7 +54,6 @@ const resources = [
 ];
 
 export default function MentalHealthPage() {
-  const router = useRouter();
   const { openChat } = useChat();
 
   return (

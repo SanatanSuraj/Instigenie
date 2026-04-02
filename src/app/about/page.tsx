@@ -4,6 +4,9 @@ import Image from 'next/image';
 import Link from 'next/link';
 import PageHero from '../components/PageHero';
 
+/** Set to true to show the Team / Our Leadership block on the about page. */
+const SHOW_TEAM_LEADERSHIP_SECTION = false;
+
 const team = [
   {
     name: 'Suraj Kumar',
@@ -138,9 +141,8 @@ export default function About() {
         </div>
       </div>
 
-      {/* Team / Leadership */}
+      {SHOW_TEAM_LEADERSHIP_SECTION && (
       <div style={{ marginBottom: '56px' }}>
-        {/* Section header – centred */}
         <div style={{ textAlign: 'center', marginBottom: '36px' }}>
           <div style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', fontSize: '11px', fontWeight: 700, color: '#0D9488', letterSpacing: '2.5px', textTransform: 'uppercase' as const, marginBottom: '12px', fontFamily: "'DM Sans', sans-serif" }}>
             <span style={{ display: 'inline-block', width: '24px', height: '2px', background: 'linear-gradient(90deg,#14B8A6,#2563EB)', borderRadius: '2px' }} />
@@ -155,7 +157,6 @@ export default function About() {
           </p>
         </div>
 
-        {/* Cards */}
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '24px', justifyItems: 'center' }}>
           {team.map((member) => (
             <div
@@ -173,7 +174,6 @@ export default function About() {
                 flexDirection: 'column',
               }}
             >
-              {/* Photo / avatar strip */}
               <div style={{ position: 'relative', height: '260px', background: `linear-gradient(135deg, ${member.avatarFrom}22, ${member.avatarTo}22)`, overflow: 'hidden' }}>
                 <Image
                   src={member.image}
@@ -183,13 +183,10 @@ export default function About() {
                   style={{ objectPosition: '50% 12%' }}
                   sizes="(max-width: 768px) 100vw, 400px"
                 />
-                {/* Gradient fade at bottom */}
                 <div style={{ position: 'absolute', bottom: 0, left: 0, right: 0, height: '80px', background: 'linear-gradient(to top, #FFFFFF, transparent)' }} />
               </div>
 
-              {/* Content */}
               <div style={{ padding: '20px 28px 28px', flex: 1, display: 'flex', flexDirection: 'column' }}>
-                {/* Name + badge */}
                 <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: '8px', marginBottom: '10px' }}>
                   <div style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: '20px', fontWeight: 800, color: '#0F2942', letterSpacing: '-0.5px' }}>
                     {member.name}
@@ -208,15 +205,12 @@ export default function About() {
                   </div>
                 </div>
 
-                {/* Divider */}
                 <div style={{ height: '1px', background: 'linear-gradient(90deg, rgba(37,99,235,0.12), transparent)', marginBottom: '14px' }} />
 
-                {/* Bio */}
                 <p style={{ fontSize: '14px', color: '#3D5A73', lineHeight: 1.72, fontFamily: "'DM Sans', sans-serif", marginBottom: '20px', flex: 1 }}>
                   {member.bio}
                 </p>
 
-                {/* Social / CTA buttons */}
                 {member.showProfile && (
                   <div style={{ display: 'flex', gap: '10px', flexWrap: 'wrap' }}>
                     <Link
@@ -263,6 +257,7 @@ export default function About() {
           ))}
         </div>
       </div>
+      )}
 
       <style jsx>{`
         .ig-val-card:hover { transform: translateY(-3px); box-shadow: 0 10px 28px rgba(37,99,235,0.09); }

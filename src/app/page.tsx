@@ -2,10 +2,17 @@
 
 import { useEffect } from 'react';
 import HeroSection from './components/home/HeroSection';
+import CredibilityStrip from './components/home/CredibilityStrip';
+import SilentCrisisSection from './components/home/SilentCrisisSection';
+import ProblemSection from './components/home/ProblemSection';
+import NationalMissionsSection from './components/home/NationalMissionsSection';
 import ServicesSection from './components/home/ServicesSection';
 import AIPanelSection from './components/home/AIPanelSection';
-import WhySection from './components/home/WhySection';
-import TestimonialsSection from './components/home/TestimonialsSection';
+import AIInfrastructureSection from './components/home/AIInfrastructureSection';
+import HowItWorksSection from './components/home/HowItWorksSection';
+import BenefitsSection from './components/home/BenefitsSection';
+import MaharashtraSection from './components/home/MaharashtraSection';
+import PrinciplesAndFAQ from './components/home/PrinciplesAndFAQ';
 import CTABanner from './components/home/CTABanner';
 
 export default function Home() {
@@ -19,7 +26,7 @@ export default function Home() {
           }
         });
       },
-      { threshold: 0.12 }
+      { threshold: 0.10 }
     );
 
     document.querySelectorAll('.ig-reveal').forEach((el) => observer.observe(el));
@@ -39,15 +46,52 @@ export default function Home() {
 
   return (
     <>
+      {/* 1. Hero */}
       <HeroSection />
       <Divider />
+
+      {/* 2. Credibility strip */}
+      <CredibilityStrip />
+      <Divider />
+
+      {/* 3. Silent Crisis — detailed national stats */}
+      <SilentCrisisSection />
+
+      {/* 4. Problem statement */}
+      <ProblemSection />
+      <Divider />
+
+      {/* 5. Government alignment — National Missions */}
+      <NationalMissionsSection />
+
+      {/* 4 & 5. Solution overview + Key features */}
       <ServicesSection />
       <Divider />
+
+      {/* Technology — AI panel */}
       <AIPanelSection />
+
+      {/* AI-First Infrastructure deep dive */}
+      <AIInfrastructureSection />
       <Divider />
-      <WhySection />
+
+      {/* 6. How it works */}
+      <HowItWorksSection />
       <Divider />
-      <TestimonialsSection />
+
+      {/* 7. Benefits & outcomes */}
+      <BenefitsSection />
+      <Divider />
+
+      {/* 8-10. Maharashtra package + Partner ecosystem */}
+      <MaharashtraSection />
+      <Divider />
+
+      {/* 11 & 12. Principles + FAQs */}
+      <PrinciplesAndFAQ />
+      <Divider />
+
+      {/* 13. Closing CTA */}
       <CTABanner />
     </>
   );

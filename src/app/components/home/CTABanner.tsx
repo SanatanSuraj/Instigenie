@@ -40,7 +40,7 @@ export default function CTABanner() {
           className="ig-pulse"
           style={{ width: '6px', height: '6px', borderRadius: '50%', background: '#fff', boxShadow: '0 0 6px rgba(255,255,255,0.7)' }}
         />
-        500+ Schools Trust Us
+        Ready to bring InstiGenie to your school
       </div>
 
       <h2
@@ -52,7 +52,7 @@ export default function CTABanner() {
           textShadow: '0 1px 12px rgba(0,0,0,0.12)',
         }}
       >
-        Ready to Transform Your School&apos;s Healthcare?
+        The best time for prevention was last year. The second-best time is this term.
       </h2>
 
       <p
@@ -62,7 +62,7 @@ export default function CTABanner() {
           fontFamily: "'DM Sans', sans-serif",
         }}
       >
-        Join forward-thinking institutions using AI-powered health intelligence.
+        Bring Instigenie to your school: calmer classrooms, clearer parents, cleaner data, and children who can see, hear, eat, and focus well enough to learn.
       </p>
 
       <div
@@ -95,7 +95,7 @@ export default function CTABanner() {
               transform: 'skewX(-20deg)',
             }}
           />
-          Book a Free Demo →
+          Book a conversation →
         </button>
 
         {/* Secondary — outline white */}
@@ -112,7 +112,7 @@ export default function CTABanner() {
             transition: 'all 0.25s', fontFamily: "'DM Sans', sans-serif",
           }}
         >
-          Talk to Sales
+          Download one-page overview
         </button>
       </div>
 

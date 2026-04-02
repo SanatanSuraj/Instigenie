@@ -117,7 +117,7 @@ export default function HeroSection() {
             boxShadow: '0 0 7px #14B8A6',
           }}
         />
-        AI-Powered School Healthcare Platform
+        School Health · Screening · Digital Records
       </div>
 
       {/* Headline */}
@@ -135,9 +135,7 @@ export default function HeroSection() {
           zIndex: 1,
         }}
       >
-        Smarter Healthcare
-        <br />
-        for Every{' '}
+        Healthy students{' '}
         <span
           style={{
             background: 'linear-gradient(90deg, #2563EB 0%, #14B8A6 60%, #22C55E 100%)',
@@ -146,8 +144,10 @@ export default function HeroSection() {
             backgroundClip: 'text',
           }}
         >
-          Student
+          learn better.
         </span>
+        <br />
+        Give every child a fair shot in class.
       </h1>
 
       {/* Sub-headline */}
@@ -164,8 +164,8 @@ export default function HeroSection() {
           fontFamily: "'DM Sans', sans-serif",
         }}
       >
-        Advanced AI-powered health assessments combined with expert medical care — designed specifically for educational
-        institutions that care about every student.
+        Instigenie brings structured, school-based health screening, digital records, and clear referrals — so issues
+        like poor vision, hearing, anemia, dental pain, and hidden stress stop silently holding students back.
       </p>
 
       {/* CTA Buttons */}
@@ -181,7 +181,7 @@ export default function HeroSection() {
         }}
       >
         <button
-          onClick={() => router.push('/book-checkup')}
+          onClick={() => router.push('/contact')}
           className="ig-cta-main"
           style={{
             display: 'flex',
@@ -214,7 +214,7 @@ export default function HeroSection() {
               transform: 'skewX(-20deg)',
             }}
           />
-          Get Started Free →
+          Talk to us about your school →
         </button>
 
         <button
@@ -238,88 +238,24 @@ export default function HeroSection() {
             boxShadow: '0 2px 8px rgba(37,99,235,0.07)',
           }}
         >
-          <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
-            <div style={{ display: 'flex', alignItems: 'center', gap: '3px', height: '16px' }}>
-              {[1, 2, 3, 4, 5].map((i) => (
-                <div
-                  key={i}
-                  className="ig-wave-bar"
-                  style={{
-                    width: '3px',
-                    background: 'linear-gradient(to top, #2563EB, #14B8A6)',
-                    borderRadius: '100px',
-                  }}
-                />
-              ))}
-            </div>
-            Watch Demo
-          </div>
+          See what&apos;s included
         </button>
       </div>
 
-      {/* Stats Row */}
-      <div
+
+
+
+      {/* Supporting line */}
+      <p
         style={{
-          display: 'flex',
-          justifyContent: 'center',
-          gap: 0,
-          marginTop: '64px',
-          flexWrap: 'wrap',
-          border: '1px solid rgba(37,99,235,0.12)',
-          borderRadius: '18px',
-          overflow: 'hidden',
-          maxWidth: '720px',
-          width: '100%',
-          background: 'rgba(255,255,255,0.80)',
-          backdropFilter: 'blur(12px)',
-          position: 'relative',
-          zIndex: 1,
-          boxShadow: '0 8px 32px rgba(37,99,235,0.10)',
+          marginTop: '18px',
+          fontSize: '12.5px', color: '#7A99B4',
+          fontFamily: "'DM Sans', sans-serif",
+          position: 'relative', zIndex: 1,
         }}
       >
-        {[
-          { num: '500+', label: 'Schools Served' },
-          { num: '98.4%', label: 'Detection Accuracy' },
-          { num: '1.2M', label: 'Students Assessed' },
-          { num: '<3min', label: 'Avg. Screening Time' },
-        ].map((stat, i, arr) => (
-          <div
-            key={stat.label}
-            style={{
-              flex: 1,
-              minWidth: '150px',
-              padding: '24px',
-              textAlign: 'center',
-              borderRight: i < arr.length - 1 ? '1px solid rgba(37,99,235,0.09)' : 'none',
-            }}
-          >
-            <div
-              style={{
-                fontFamily: "'Space Grotesk', sans-serif",
-                fontSize: '28px',
-                fontWeight: 700,
-                background: 'linear-gradient(135deg, #2563EB, #14B8A6)',
-                WebkitBackgroundClip: 'text',
-                WebkitTextFillColor: 'transparent',
-                backgroundClip: 'text',
-              }}
-            >
-              {stat.num}
-            </div>
-            <div
-              style={{
-                fontSize: '12px',
-                color: '#7A99B4',
-                marginTop: '4px',
-                fontWeight: 500,
-                fontFamily: "'DM Sans', sans-serif",
-              }}
-            >
-              {stat.label}
-            </div>
-          </div>
-        ))}
-      </div>
+        Designed for privacy, clinical quality, and scale — from metro campuses to towns and rural clusters.
+      </p>
 
       <style jsx>{`
         .ig-cta-main:hover {

@@ -1,6 +1,7 @@
 import './globals.css';
 import MetadataScript from '@/app/components/Metadata';
 import LayoutShell from '@/app/components/LayoutShell';
+import CustomCursor from '@/app/components/CustomCursor';
 import { ThemeProvider } from 'next-themes';
 import { ChatProvider } from './context/ChatContext';
 import { Space_Grotesk, DM_Sans, Playfair_Display, Lora, Inter } from 'next/font/google';
@@ -54,6 +55,7 @@ export default function RootLayout({
       <body className="min-h-screen bg-clinic-white dark:bg-soft-charcoal">
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
           <ChatProvider>
+            <CustomCursor />
             <LayoutShell>{children}</LayoutShell>
           </ChatProvider>
         </ThemeProvider>

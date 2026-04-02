@@ -60,6 +60,9 @@ export default function CTABanner() {
           fontSize: '17px', color: 'rgba(255,255,255,0.85)',
           marginBottom: '40px', position: 'relative',
           fontFamily: "'DM Sans', sans-serif",
+          maxWidth: '640px',
+          margin: '0 auto 40px',
+          lineHeight: 1.70,
         }}
       >
         Bring Instigenie to your school: calmer classrooms, clearer parents, cleaner data, and children who can see, hear, eat, and focus well enough to learn.

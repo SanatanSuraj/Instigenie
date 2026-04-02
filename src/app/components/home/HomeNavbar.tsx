@@ -38,19 +38,21 @@ export default function HomeNavbar() {
       </Link>
 
       {/* Nav links */}
-      <div className="hidden md:flex" style={{ alignItems: 'center', gap: '2px' }}>
+      <div className="hidden md:flex" style={{ alignItems: 'center', gap: '4px' }}>
         {[
           { label: 'Services', href: '/services' },
           { label: 'Schools', href: '/schools' },
           { label: 'Mental Health', href: '/mental-health' },
           { label: 'Pricing', href: '/pricing' },
+          { label: 'FAQ', href: '/faq' },
+          { label: 'Blog', href: '/blog' },
           { label: 'About', href: '/about' },
         ].map(({ label, href }) => (
           <Link
             key={href}
             href={href}
             style={{
-              padding: '7px 14px',
+              padding: '7px 16px',
               borderRadius: '8px',
               fontSize: '14px',
               fontWeight: 500,
@@ -59,6 +61,7 @@ export default function HomeNavbar() {
               transition: 'all 0.18s',
               textDecoration: 'none',
               fontFamily: "'DM Sans', sans-serif",
+              letterSpacing: '0.1px',
             }}
             className="ig-nav-link"
           >
@@ -102,8 +105,8 @@ export default function HomeNavbar() {
         <button
           onClick={() => router.push('/login')}
           style={{
-            padding: '8px 18px',
-            borderRadius: '8px',
+            padding: '8px 20px',
+            borderRadius: '9px',
             fontSize: '14px',
             fontWeight: 500,
             color: '#3D5A73',

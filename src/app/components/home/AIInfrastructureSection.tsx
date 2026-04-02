@@ -83,7 +83,7 @@ function TagGroup({ heading, tags }: { heading: string; tags: Tag[] }) {
           marginBottom: '10px', fontFamily: "'Space Grotesk', sans-serif",
         }}
       >
-        // {heading}
+        {heading}
       </div>
       <div style={{ display: 'flex', flexWrap: 'wrap' as const, gap: '8px' }}>
         {tags.map((t) => (

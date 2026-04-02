@@ -38,8 +38,8 @@ export default function Home() {
     <hr
       style={{
         border: 'none',
-        borderTop: '1px solid var(--ig-border)',
-        margin: '0 24px',
+        borderTop: '1px solid rgba(37,99,235,0.07)',
+        margin: '0',
       }}
     />
   );

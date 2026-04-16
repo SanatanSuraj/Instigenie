@@ -1,4 +1,4 @@
-import { ReactNode, useRef, useEffect } from 'react';
+import { ReactNode } from 'react';
 
 interface ChatLayoutProps {
   children: ReactNode;

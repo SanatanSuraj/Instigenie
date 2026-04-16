@@ -10,7 +10,6 @@ interface ChatInputProps {
   onSendMessage: (e: FormEvent) => void;
   onToggleVoice: () => void;
   onStopSpeaking: () => void;
-  messagesEndRef: React.RefObject<HTMLDivElement | null>;
 }
 
 export function ChatInput({
@@ -23,7 +22,6 @@ export function ChatInput({
   onSendMessage,
   onToggleVoice,
   onStopSpeaking,
-  messagesEndRef,
 }: ChatInputProps) {
   return (
     <div className="fixed bottom-0 left-0 right-0 bg-gradient-to-t from-slate-50 via-slate-50 to-transparent pt-10 pb-6 px-4 z-30">

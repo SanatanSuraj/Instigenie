@@ -211,6 +211,7 @@ export default function ChatPage() {
         const response = await fetch('/api/messages');
         if (response.ok) {
           const data = await response.json();
+          // eslint-disable-next-line @typescript-eslint/no-explicit-any
           setMessages((data.messages || []).map((msg: any) => ({ ...msg, timestamp: new Date(msg.timestamp) })));
           setAuthenticated(true);
         } else { router.push('/login'); }
@@ -344,7 +345,6 @@ export default function ChatPage() {
         onSendMessage={handleSendMessage}
         onToggleVoice={toggleVoiceRecognition}
         onStopSpeaking={stopSpeaking}
-        messagesEndRef={messagesEndRef}
       />
     </ChatLayout>
   );

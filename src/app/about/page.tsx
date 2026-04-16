@@ -5,26 +5,26 @@ import Link from 'next/link';
 import PageHero from '../components/PageHero';
 
 /** Set to true to show the Team / Our Leadership block on the about page. */
-const SHOW_TEAM_LEADERSHIP_SECTION = false;
+const SHOW_TEAM_LEADERSHIP_SECTION = true;
 
 const team = [
   {
     name: 'Suraj Kumar',
     role: 'Founder & CEO',
-    image: '/images/profile/suraj_kumar.png',
+    image: '/images/profile/suraj_kumar1.png',
     bio: 'Visionary founder of InstiGenie, leading the revolution in student healthcare through innovative technology and compassionate service.',
     linkedin: 'https://www.linkedin.com/in/sanatansuraj/',
     showProfile: true,
     avatarFrom: '#2563EB', avatarTo: '#14B8A6',
   },
-  {
-    name: 'Rakhi Devi',
-    role: 'Director',
-    image: '/images/profile/rakhi_devi.png',
-    bio: 'As a mother deeply invested in student well-being, Rakhi brings valuable perspective to InstiGenie, advocating for accessible healthcare solutions that benefit every child.',
-    showProfile: false,
-    avatarFrom: '#14B8A6', avatarTo: '#22C55E',
-  },
+  // {
+  //   name: 'Rakhi Devi',
+  //   role: 'Director',
+  //   image: '/images/profile/rakhi_devi.png',
+  //   bio: 'As a mother deeply invested in student well-being, Rakhi brings valuable perspective to InstiGenie, advocating for accessible healthcare solutions that benefit every child.',
+  //   showProfile: false,
+  //   avatarFrom: '#14B8A6', avatarTo: '#22C55E',
+  // },
 ];
 
 const stats = [
@@ -92,9 +92,120 @@ export default function About() {
             </p>
           </div>
         </div>
-        <div style={{ borderRadius: '18px', overflow: 'hidden', height: '380px', position: 'relative', boxShadow: '0 8px 32px rgba(37,99,235,0.12)' }}>
-          <Image src="/images/schools/School Health Checkup.png" alt="School Health Checkup" fill className="object-cover" />
+        {SHOW_TEAM_LEADERSHIP_SECTION && (
+        <div style={{ display: 'flex', flexDirection: 'column', height: '100%', justifyContent: 'center' }}>
+          <div style={{ textAlign: 'center', marginBottom: '24px' }}>
+            <div style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', fontSize: '11px', fontWeight: 700, color: '#0D9488', letterSpacing: '2.5px', textTransform: 'uppercase' as const, marginBottom: '12px', fontFamily: "'DM Sans', sans-serif" }}>
+              <span style={{ display: 'inline-block', width: '24px', height: '2px', background: 'linear-gradient(90deg,#14B8A6,#2563EB)', borderRadius: '2px' }} />
+              The Team
+              <span style={{ display: 'inline-block', width: '24px', height: '2px', background: 'linear-gradient(90deg,#2563EB,#14B8A6)', borderRadius: '2px' }} />
+            </div>
+            <h2 style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: 'clamp(24px, 3.5vw, 36px)', fontWeight: 800, letterSpacing: '-1px', color: '#0F2942', margin: '0' }}>
+              Our Leadership
+            </h2>
+          </div>
+
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '24px', justifyItems: 'center' }}>
+            {team.map((member) => (
+              <div
+                key={member.name}
+                className="ig-leader-card"
+                style={{
+                  width: '100%',
+                  maxWidth: '400px',
+                  borderRadius: '22px',
+                  border: '1.5px solid rgba(37,99,235,0.10)',
+                  background: '#FFFFFF',
+                  overflow: 'hidden',
+                  boxShadow: '0 4px 24px rgba(37,99,235,0.07)',
+                  display: 'flex',
+                  flexDirection: 'column',
+                }}
+              >
+                <div style={{ position: 'relative', height: '260px', background: `linear-gradient(135deg, ${member.avatarFrom}22, ${member.avatarTo}22)`, overflow: 'hidden' }}>
+                  <Image
+                    src={member.image}
+                    alt={member.name}
+                    fill
+                    className="object-cover"
+                    style={{ objectPosition: '50% 12%' }}
+                    sizes="(max-width: 768px) 100vw, 400px"
+                  />
+                  <div style={{ position: 'absolute', bottom: 0, left: 0, right: 0, height: '80px', background: 'linear-gradient(to top, #FFFFFF, transparent)' }} />
+                </div>
+
+                <div style={{ padding: '20px 24px 24px', flex: 1, display: 'flex', flexDirection: 'column' }}>
+                  <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: '8px', marginBottom: '10px' }}>
+                    <div style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: '20px', fontWeight: 800, color: '#0F2942', letterSpacing: '-0.5px' }}>
+                      {member.name}
+                    </div>
+                    <div style={{
+                      display: 'inline-flex', alignItems: 'center', gap: '5px',
+                      fontSize: '11px', fontWeight: 700, letterSpacing: '1px', textTransform: 'uppercase' as const,
+                      color: member.avatarFrom,
+                      background: `${member.avatarFrom}15`,
+                      border: `1px solid ${member.avatarFrom}30`,
+                      borderRadius: '20px', padding: '4px 12px',
+                      fontFamily: "'DM Sans', sans-serif",
+                    }}>
+                      <span style={{ width: '6px', height: '6px', borderRadius: '50%', background: member.avatarFrom, flexShrink: 0 }} />
+                      {member.role}
+                    </div>
+                  </div>
+
+                  <div style={{ height: '1px', background: 'linear-gradient(90deg, rgba(37,99,235,0.12), transparent)', marginBottom: '14px' }} />
+
+                  <p style={{ fontSize: '14px', color: '#3D5A73', lineHeight: 1.72, fontFamily: "'DM Sans', sans-serif", marginBottom: '20px', flex: 1 }}>
+                    {member.bio}
+                  </p>
+
+                  {member.showProfile && (
+                    <div style={{ display: 'flex', gap: '10px', flexWrap: 'wrap' }}>
+                      <Link
+                        href="/profile/suraj-kumar"
+                        style={{
+                          display: 'inline-flex', alignItems: 'center', gap: '6px',
+                          fontSize: '13px', fontWeight: 700, fontFamily: "'DM Sans', sans-serif",
+                          color: '#FFFFFF',
+                          background: 'linear-gradient(135deg, #2563EB, #14B8A6)',
+                          borderRadius: '10px', padding: '9px 18px',
+                          textDecoration: 'none',
+                          boxShadow: '0 4px 14px rgba(37,99,235,0.22)',
+                          transition: 'opacity 0.2s',
+                        }}
+                      >
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg>
+                        View Profile
+                      </Link>
+
+                      {member.linkedin && (
+                        <a
+                          href={member.linkedin}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          style={{
+                            display: 'inline-flex', alignItems: 'center', gap: '6px',
+                            fontSize: '13px', fontWeight: 700, fontFamily: "'DM Sans', sans-serif",
+                            color: '#2563EB',
+                            background: '#EFF6FF',
+                            border: '1.5px solid rgba(37,99,235,0.18)',
+                            borderRadius: '10px', padding: '9px 18px',
+                            textDecoration: 'none',
+                            transition: 'background 0.2s',
+                          }}
+                        >
+                          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+                          LinkedIn
+                        </a>
+                      )}
+                    </div>
+                  )}
+                </div>
+              </div>
+            ))}
+          </div>
         </div>
+        )}
       </div>
 
       {/* Stats */}
@@ -141,123 +252,7 @@ export default function About() {
         </div>
       </div>
 
-      {SHOW_TEAM_LEADERSHIP_SECTION && (
-      <div style={{ marginBottom: '56px' }}>
-        <div style={{ textAlign: 'center', marginBottom: '36px' }}>
-          <div style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', fontSize: '11px', fontWeight: 700, color: '#0D9488', letterSpacing: '2.5px', textTransform: 'uppercase' as const, marginBottom: '12px', fontFamily: "'DM Sans', sans-serif" }}>
-            <span style={{ display: 'inline-block', width: '24px', height: '2px', background: 'linear-gradient(90deg,#14B8A6,#2563EB)', borderRadius: '2px' }} />
-            The Team
-            <span style={{ display: 'inline-block', width: '24px', height: '2px', background: 'linear-gradient(90deg,#2563EB,#14B8A6)', borderRadius: '2px' }} />
-          </div>
-          <h2 style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: 'clamp(26px, 4vw, 42px)', fontWeight: 800, letterSpacing: '-1.5px', color: '#0F2942', margin: '0 0 10px' }}>
-            Our Leadership
-          </h2>
-          <p style={{ fontSize: '15px', color: '#7A99B4', fontFamily: "'DM Sans', sans-serif", maxWidth: '460px', margin: '0 auto', lineHeight: 1.6 }}>
-            Passionate people building a healthier future for every student.
-          </p>
-        </div>
 
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '24px', justifyItems: 'center' }}>
-          {team.map((member) => (
-            <div
-              key={member.name}
-              className="ig-leader-card"
-              style={{
-                width: '100%',
-                maxWidth: '400px',
-                borderRadius: '22px',
-                border: '1.5px solid rgba(37,99,235,0.10)',
-                background: '#FFFFFF',
-                overflow: 'hidden',
-                boxShadow: '0 4px 24px rgba(37,99,235,0.07)',
-                display: 'flex',
-                flexDirection: 'column',
-              }}
-            >
-              <div style={{ position: 'relative', height: '260px', background: `linear-gradient(135deg, ${member.avatarFrom}22, ${member.avatarTo}22)`, overflow: 'hidden' }}>
-                <Image
-                  src={member.image}
-                  alt={member.name}
-                  fill
-                  className="object-cover"
-                  style={{ objectPosition: '50% 12%' }}
-                  sizes="(max-width: 768px) 100vw, 400px"
-                />
-                <div style={{ position: 'absolute', bottom: 0, left: 0, right: 0, height: '80px', background: 'linear-gradient(to top, #FFFFFF, transparent)' }} />
-              </div>
-
-              <div style={{ padding: '20px 28px 28px', flex: 1, display: 'flex', flexDirection: 'column' }}>
-                <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: '8px', marginBottom: '10px' }}>
-                  <div style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: '20px', fontWeight: 800, color: '#0F2942', letterSpacing: '-0.5px' }}>
-                    {member.name}
-                  </div>
-                  <div style={{
-                    display: 'inline-flex', alignItems: 'center', gap: '5px',
-                    fontSize: '11px', fontWeight: 700, letterSpacing: '1px', textTransform: 'uppercase' as const,
-                    color: member.avatarFrom,
-                    background: `${member.avatarFrom}15`,
-                    border: `1px solid ${member.avatarFrom}30`,
-                    borderRadius: '20px', padding: '4px 12px',
-                    fontFamily: "'DM Sans', sans-serif",
-                  }}>
-                    <span style={{ width: '6px', height: '6px', borderRadius: '50%', background: member.avatarFrom, flexShrink: 0 }} />
-                    {member.role}
-                  </div>
-                </div>
-
-                <div style={{ height: '1px', background: 'linear-gradient(90deg, rgba(37,99,235,0.12), transparent)', marginBottom: '14px' }} />
-
-                <p style={{ fontSize: '14px', color: '#3D5A73', lineHeight: 1.72, fontFamily: "'DM Sans', sans-serif", marginBottom: '20px', flex: 1 }}>
-                  {member.bio}
-                </p>
-
-                {member.showProfile && (
-                  <div style={{ display: 'flex', gap: '10px', flexWrap: 'wrap' }}>
-                    <Link
-                      href="/profile/suraj-kumar"
-                      style={{
-                        display: 'inline-flex', alignItems: 'center', gap: '6px',
-                        fontSize: '13px', fontWeight: 700, fontFamily: "'DM Sans', sans-serif",
-                        color: '#FFFFFF',
-                        background: 'linear-gradient(135deg, #2563EB, #14B8A6)',
-                        borderRadius: '10px', padding: '9px 18px',
-                        textDecoration: 'none',
-                        boxShadow: '0 4px 14px rgba(37,99,235,0.22)',
-                        transition: 'opacity 0.2s',
-                      }}
-                    >
-                      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg>
-                      View Profile
-                    </Link>
-
-                    {member.linkedin && (
-                      <a
-                        href={member.linkedin}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        style={{
-                          display: 'inline-flex', alignItems: 'center', gap: '6px',
-                          fontSize: '13px', fontWeight: 700, fontFamily: "'DM Sans', sans-serif",
-                          color: '#2563EB',
-                          background: '#EFF6FF',
-                          border: '1.5px solid rgba(37,99,235,0.18)',
-                          borderRadius: '10px', padding: '9px 18px',
-                          textDecoration: 'none',
-                          transition: 'background 0.2s',
-                        }}
-                      >
-                        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
-                        LinkedIn
-                      </a>
-                    )}
-                  </div>
-                )}
-              </div>
-            </div>
-          ))}
-        </div>
-      </div>
-      )}
 
       <style jsx>{`
         .ig-val-card:hover { transform: translateY(-3px); box-shadow: 0 10px 28px rgba(37,99,235,0.09); }

@@ -148,7 +148,7 @@ export default function SurajProfile() {
             {/* Right – Photo */}
             <div style={{ position: 'relative', height: '420px', borderRadius: '20px 20px 0 0', overflow: 'hidden', boxShadow: '0 -8px 40px rgba(20,184,166,0.18)' }}>
               <Image
-                src="/images/profile/suraj_kumar.png"
+                src="/images/profile/suraj_kumar1.png"
                 alt="Suraj Kumar"
                 fill
                 className="object-cover"
